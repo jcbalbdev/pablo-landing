@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../../assets/Logo.png';
+// src/components/sections/FinalCTA.astro
+---
+
+<section class="fcta">
+  <div class="container fcta__inner">
+    <div class="fcta-logo">
+      <Image src={logoImg} alt="Pablo" width={56} height={56} class="fcta-logo-img" />
+    </div>
+    <h2 class="fcta__title">¿Buscas tranquilidad al manejar<br />tu dinero?</h2>
+    <p class="fcta__desc">
+      Pablo te ayuda a entender tus gastos, ahorrar mejor y dejar atrás el estrés financiero.
+      <strong>Todo desde WhatsApp, sin complicarte.</strong>
+    </p>
+    <button onclick="window.openWaitlistModal()" class="btn-primary fcta__cta" id="finalcta-btn">Únete a la lista de espera 🚀</button>
+  </div>
+</section>
+
+<style>
+  .fcta {
+    background: #F0EEFF;
+    padding: var(--section-py) 0;
+  }
+
+  .fcta__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .fcta-logo {
+    width: 80px;
+    height: 80px;
+    background: var(--color-amber);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+    overflow: hidden;
+  }
+
+  .fcta-logo-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+
+  .fcta__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.15;
+    color: var(--color-heading);
+  }
+
+  .fcta__desc {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-body);
+    max-width: 500px;
+  }
+
+  .fcta__cta {
+    margin-top: 8px;
+    font-size: 17px;
+    padding: 16px 36px;
+  }
+
+  @media (max-width: 768px) {
+    .fcta__title {
+      font-size: 28px;
+    }
+
+    .fcta__desc {
+      font-size: 15px;
+    }
+  }
+</style>

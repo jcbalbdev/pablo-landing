@@ -1,0 +1,231 @@
+---
+import { Image } from 'astro:assets';
+import iconPablo from '../../assets/iconpablo.png';
+// src/components/sections/HowItWorks.astro
+---
+
+<section class="how" id="como-funciona">
+  <div class="how__ellipse" aria-hidden="true"></div>
+
+  <div class="container how__inner">
+    <!-- Badge -->
+    <div class="how__badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Potenciado con IA
+    </div>
+
+    <h2 class="how__title section-title">¿Cómo funciona <span class="highlight">Pablo</span>?</h2>
+
+    <p class="how__desc">
+      Pablo vive en WhatsApp; solo dile "<strong>Gasté 10 soles en el almuerzo</strong>" y él lo registra,
+      te explica tus hábitos y te envía reportes personalizados.
+      <strong>Texto, voz o imagen: Pablo lo entiende.</strong>
+    </p>
+
+    <!-- Chat demo card -->
+    <div class="chat-card">
+      <!-- User message -->
+      <div class="cc-msg cc-user">
+        <div class="cc-avatar cc-avatar--user">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#888"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="cc-bubble cc-bubble--user">
+          <span class="cc-label">Tú</span>
+          <p>Gasté 35 soles en el cine</p>
+        </div>
+      </div>
+
+      <!-- Pablo response -->
+      <div class="cc-msg cc-pablo">
+        <div class="cc-avatar cc-avatar--pablo">
+          <Image src={iconPablo} alt="Pablo" width={36} height={36} class="cc-avatar-img" />
+        </div>
+        <div class="cc-bubble cc-bubble--pablo">
+          <span class="cc-label">Pablo</span>
+          <p>Entendido. Lo registré en "Entretenimiento 🎬".</p>
+          <p>Llevas S/.40 en Entretenimiento esta semana.</p>
+          <p class="cc-green">¡S/.25 por debajo de tu presupuesto! 🥂</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: #FFFFFF;
+    padding: var(--section-py) 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  /* Decorative ellipse */
+  .how__ellipse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: 820px;
+    height: 820px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #EFEDF7 0%, #F0EDF7 50%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .how__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  /* Badge */
+  .how__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    background: #EBE8FA;
+    color: var(--color-purple);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .how__title {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+
+  .how__desc {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--color-body);
+    max-width: 600px;
+  }
+
+  .how__desc strong {
+    color: var(--color-heading);
+    font-weight: 700;
+  }
+
+  /* Chat card */
+  .chat-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 32px 40px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 680px;
+    text-align: left;
+    margin-top: 8px;
+  }
+
+  .cc-msg {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .cc-pablo {
+    align-items: flex-start;
+  }
+
+  /* Avatars */
+  .cc-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .cc-avatar--user {
+    background: #D1D0D5;
+  }
+
+  .cc-avatar--pablo {
+    background: transparent;
+  }
+
+  .cc-avatar-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Bubbles */
+  .cc-bubble {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cc-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+
+  .cc-bubble--user p {
+    display: inline-block;
+    background: #F5F3FF;
+    border-radius: 6px 16px 16px 16px;
+    padding: 8px 14px;
+    font-size: 14px;
+    color: var(--color-heading);
+    font-weight: 500;
+  }
+
+  .cc-bubble--pablo {
+    gap: 6px;
+  }
+
+  .cc-bubble--pablo p {
+    display: inline-block;
+    background: #EEF8EE;
+    border: 1px solid #DAE5DA;
+    border-radius: 16px 16px 16px 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    color: var(--color-heading);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .cc-green {
+    color: #52AF56 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .how__title {
+      font-size: 30px;
+    }
+
+    .how__desc {
+      font-size: 16px;
+    }
+
+    .chat-card {
+      padding: 24px 20px;
+    }
+
+    .how__ellipse {
+      width: 400px;
+      height: 400px;
+    }
+  }
+</style>

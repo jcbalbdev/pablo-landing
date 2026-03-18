@@ -1,0 +1,347 @@
+---
+// src/components/sections/Pricing.astro
+---
+
+<section class="pricing" id="planes">
+  <div class="container pricing__inner">
+    <!-- Header -->
+    <div class="pricing__header">
+      <div class="pricing__badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Pasos simples, resultados reales
+      </div>
+      <h2 class="pricing__title section-title">
+        Da el primer paso hacia tu <span class="highlight">bienestar financiero</span>
+      </h2>
+      <p class="pricing__subtitle">
+        Empieza con lo esencial y mejora tu plan cuando tú decides.
+        Sin presiones ni letra chica.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="pricing__cards">
+
+      <!-- FREE PLAN -->
+      <div class="plan-card plan-free">
+        <div class="plan-header">
+          <div class="plan-icon plan-icon--outline">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="plan-name">Pablo gratis</h3>
+        </div>
+        <p class="plan-tagline">
+          Empieza a organizar tu dinero con Pablo en WhatsApp, simple, cercano y 100% gratis.
+        </p>
+        <div class="plan-price">
+          <span class="plan-amount">S/.0</span>
+          <span class="plan-period">siempre</span>
+        </div>
+        <ul class="plan-features">
+          <li>
+            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Registro ilimitado de gastos e ingresos por texto
+          </li>
+          <li>
+            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Hasta 5 registros por voz y foto al mes
+          </li>
+          <li>
+            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Tips financieros semanales
+          </li>
+          <li>
+            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Reportes básicos de gastos
+          </li>
+          <li>
+            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Soporte técnico estándar
+          </li>
+        </ul>
+        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--free" id="pricing-free-cta">Únete a la lista de espera</button>
+      </div>
+
+      <!-- PREMIUM PLAN -->
+      <div class="plan-card plan-premium">
+        <div class="plan-best-badge">🏆 Tu mejor opción</div>
+        <div class="plan-header">
+          <div class="plan-icon plan-icon--amber">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 3l-4 6 10 13L22 9 18 3H6z" stroke="#2B2C64" stroke-width="1.8"/><polyline points="2 9 12 22 22 9" stroke="#2B2C64" stroke-width="1.8"/><line x1="6" y1="3" x2="12" y2="9" stroke="#2B2C64" stroke-width="1.8"/><line x1="18" y1="3" x2="12" y2="9" stroke="#2B2C64" stroke-width="1.8"/></svg>
+          </div>
+          <h3 class="plan-name">Pablo Premium</h3>
+        </div>
+        <p class="plan-tagline">
+          Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+        </p>
+        <div class="plan-price">
+          <span class="plan-amount">S/.20</span>
+          <span class="plan-period">/mensuales</span>
+        </div>
+        <ul class="plan-features">
+          <li>
+            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Todo lo que incluye Pablo Gratis, y además:
+          </li>
+          <li>
+            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Automatización de registros ilimitados vía texto, voz y foto
+          </li>
+          <li>
+            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Acceso a Pablo Web con reportes completos y seguimiento de metas financieras
+          </li>
+          <li>
+            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Soporte prioritario
+          </li>
+        </ul>
+        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--premium btn-primary" id="pricing-premium-cta">Únete a la lista de espera</button>
+      </div>
+
+    </div>
+
+    <p class="pricing__note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Cancela cuando quieras. Sin complicaciones.
+    </p>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    background: var(--bg-pricing);
+    padding: var(--section-py) 0;
+  }
+
+  .pricing__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* Header */
+  .pricing__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .pricing__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    background: #EBF9F0;
+    color: #2a7a52;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .pricing__title {
+    font-size: 42px;
+    line-height: 1.15;
+  }
+
+  .pricing__subtitle {
+    font-size: 16px;
+    color: var(--color-body);
+    max-width: 480px;
+  }
+
+  /* Cards grid */
+  .pricing__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 900px;
+    align-items: start;
+  }
+
+  /* Base card */
+  .plan-card {
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+  }
+
+  .plan-free {
+    background: white;
+    border: 1.5px solid #E5E3F0;
+    box-shadow: var(--card-shadow);
+  }
+
+  .plan-premium {
+    background: linear-gradient(135deg, #F7ECD4 0%, #E8E6E6 60%, #F3F3F6 100%);
+    border: 2px solid var(--color-amber);
+    box-shadow: 0 8px 40px rgba(245, 166, 35, 0.2);
+  }
+
+  /* Best badge */
+  .plan-best-badge {
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    background: var(--color-amber);
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: var(--radius-pill);
+  }
+
+  /* Plan icon */
+  .plan-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .plan-icon--outline {
+    background: #F0EFFE;
+    border: 1.5px solid #D8D4F5;
+  }
+
+  .plan-icon--amber {
+    background: linear-gradient(135deg, #FEF3DA 0%, #FDE8B0 100%);
+    border: 1.5px solid #F5C970;
+  }
+
+  /* Plan name */
+  .plan-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--color-heading);
+  }
+
+  .plan-tagline {
+    font-size: 14px;
+    color: var(--color-body);
+    line-height: 1.55;
+  }
+
+  /* Price */
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin: 4px 0;
+  }
+
+  .plan-amount {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--color-heading);
+    line-height: 1;
+  }
+
+  .plan-period {
+    font-size: 14px;
+    color: var(--color-secondary);
+    font-weight: 500;
+  }
+
+  /* Features list */
+  .plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 4px 0;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--color-body);
+    line-height: 1.5;
+  }
+
+  .check {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Plan header: icon + name inline */
+  .plan-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .plan-header .plan-name {
+    margin: 0;
+  }
+
+  .plan-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .plan-cta--free {
+    background: transparent;
+    border: 1.5px solid var(--color-heading);
+    color: var(--color-heading);
+  }
+
+  .plan-cta--free:hover {
+    background: var(--color-heading);
+    color: white;
+  }
+
+  .plan-cta--premium {
+    box-shadow: 0 4px 16px rgba(245, 166, 35, 0.35) !important;
+  }
+
+  /* Note */
+  .pricing__note {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    color: var(--color-secondary);
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .pricing__cards {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+
+    .pricing__title {
+      font-size: 28px;
+    }
+
+    .plan-card {
+      padding: 28px 24px;
+    }
+
+    .plan-premium {
+      margin-top: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,231 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/Logo.png';
+// src/components/Navbar.astro
+---
+
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="navbar__logo">
+      <Image src={logoImg} alt="Pablo logo" class="logo-img" width={36} height={36} />
+      <span class="logo-text">Pablo</span>
+    </a>
+
+    <nav class="navbar__nav">
+      <a href="#como-funciona" class="nav-link">Cómo funciona</a>
+      <a href="#planes" class="nav-link">Planes</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button onclick="window.openWaitlistModal()" class="btn-primary btn-sm" id="navbar-cta-btn">Únete a la lista de espera</button>
+    </div>
+
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="navbar__mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#como-funciona" class="nav-link">Cómo funciona</a>
+    <a href="#planes" class="nav-link">Planes</a>
+    <div class="mobile-actions">
+      <button onclick="window.openWaitlistModal()" class="btn-primary" id="navbar-mobile-cta-btn">Únete a la lista de espera 🚀</button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-header);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(43, 44, 100, 0.06);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 16px;
+  }
+
+  /* Logo */
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .logo-img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--color-heading);
+  }
+
+  /* Nav */
+  .navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-heading);
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-amber);
+  }
+
+  /* Actions */
+  .navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .btn-outline-nav {
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid var(--color-heading);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-heading);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-outline-nav:hover {
+    background: var(--color-heading);
+    color: white;
+  }
+
+  .btn-sm {
+    padding: 9px 20px !important;
+    font-size: 14px !important;
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px;
+    margin-left: auto;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-heading);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .navbar__mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 20px 20px;
+    background: var(--bg-header);
+    border-top: 1px solid rgba(43, 44, 100, 0.06);
+  }
+
+  .navbar__mobile-menu .nav-link {
+    padding: 10px 4px;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(43, 44, 100, 0.06);
+  }
+
+  .mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 12px;
+  }
+
+  .mobile-actions .btn-outline-nav,
+  .mobile-actions .btn-primary {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .navbar__mobile-menu.is-open {
+    display: flex;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .navbar__nav,
+    .navbar__actions {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('is-open');
+    hamburger.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('is-open');
+      hamburger?.classList.remove('is-open');
+      hamburger?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

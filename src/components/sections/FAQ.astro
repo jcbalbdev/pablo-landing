@@ -1,0 +1,189 @@
+---
+// src/components/sections/FAQ.astro
+
+const faqs = [
+  {
+    question: "¿Pablo es gratis?",
+    answer: "¡Sí! Nuestro plan gratuito te da todo lo que necesitas para empezar a manejar mejor tu dinero. Las funciones Premium están disponibles para quienes quieran llevarlo al siguiente nivel.",
+  },
+  {
+    question: "¿Cómo protege Pablo mis datos?",
+    answer: "Tus datos están protegidos con encriptación de nivel bancario. No compartimos tu información con terceros.",
+  },
+  {
+    question: "¿Necesito instalar algo?",
+    answer: "No necesitas instalar nada. Pablo funciona directamente en WhatsApp, la app que ya usas todos los días.",
+  },
+  {
+    question: "¿Cómo empiezo?",
+    answer: "Solo haz clic en 'Empieza Gratis con Pablo' y estarás chateando con Pablo en segundos. Sin formularios, sin tarjeta de crédito.",
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container faq__inner">
+    <div class="faq__header">
+      <h2 class="section-title faq__title">
+        ¿Tienes preguntas? Tenemos las respuestas
+      </h2>
+      <p class="faq__subtitle">Todo lo que necesitas saber sobre Pablo</p>
+    </div>
+
+    <div class="faq__list" role="list">
+      {faqs.map((faq, i) => (
+        <div class="faq-item" role="listitem">
+          <button
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${i}`}
+            id={`faq-btn-${i}`}
+          >
+            <span>{faq.question}</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div
+            class="faq-answer"
+            id={`faq-answer-${i}`}
+            role="region"
+            aria-labelledby={`faq-btn-${i}`}
+            hidden
+          >
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--bg-faq);
+    padding: var(--section-py) 0;
+  }
+
+  .faq__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .faq__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq__title {
+    font-size: 40px;
+    line-height: 1.15;
+    max-width: 600px;
+  }
+
+  .faq__subtitle {
+    font-size: 16px;
+    color: var(--color-body);
+  }
+
+  .faq__list {
+    width: 100%;
+    max-width: 780px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(43, 44, 100, 0.1);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 4px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-heading);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.15s;
+  }
+
+  .faq-question:hover {
+    color: var(--color-purple);
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-heading);
+  }
+
+  .faq-question[aria-expanded="true"] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-question[aria-expanded="true"] {
+    color: var(--color-purple);
+  }
+
+  .faq-answer {
+    overflow: hidden;
+  }
+
+  .faq-answer p {
+    padding: 0 4px 22px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-body);
+    animation: fadeIn 0.25s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .faq__title {
+      font-size: 28px;
+    }
+
+    .faq-question {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const answerId = button.getAttribute('aria-controls')!;
+      const answer = document.getElementById(answerId);
+
+      // Close all others
+      document.querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const id = b.getAttribute('aria-controls')!;
+        const a = document.getElementById(id);
+        if (a) a.hidden = true;
+      });
+
+      // Toggle current
+      if (!isExpanded) {
+        button.setAttribute('aria-expanded', 'true');
+        if (answer) answer.hidden = false;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,213 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/Logo.png';
+// src/components/Footer.astro
+---
+
+<footer class="footer">
+  <div class="container footer__top">
+    <!-- Brand -->
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <Image src={logoImg} alt="Pablo logo" class="footer-logo-img" width={32} height={32} />
+        <span class="footer-logo-text">Pablo</span>
+      </div>
+      <p class="footer__tagline">
+        Tu asistente financiero con IA, amigable y cercano.<br />
+        Siente tranquilidad, confianza y control sobre tu dinero.
+      </p>
+      <div class="footer__socials">
+        <!-- Instagram -->
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg
+          >
+        </a>
+        <!-- LinkedIn -->
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            ><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg
+          >
+        </a>
+      </div>
+    </div>
+
+    <!-- Links: Sobre nosotros -->
+    <div class="footer__col">
+      <h4 class="footer__col-title">Sobre nosotros</h4>
+      <ul class="footer__links">
+        <li><a href="#">La Komu</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p class="footer__copy">
+        2026 Pablo. Hecho con 💛 por Komu AI Software. Lima – Perú
+      </p>
+      <div class="footer__bottom-links">
+        <a href="mailto:team@usapablo.com">team@usapablo.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-footer);
+    color: var(--color-footer-text);
+  }
+
+  /* Top section */
+  .footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    padding-top: 64px;
+    padding-bottom: 48px;
+  }
+
+  /* Brand */
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .footer-logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+  }
+
+  .footer__tagline {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-footer-text);
+    max-width: 280px;
+  }
+
+  /* Socials */
+  .footer__socials {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s;
+  }
+
+  .social-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Columns */
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer__col-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    letter-spacing: 0.01em;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer__links a {
+    font-size: 14px;
+    color: var(--color-footer-text);
+    transition: color 0.15s;
+  }
+
+  .footer__links a:hover {
+    color: white;
+  }
+
+  /* Bottom bar */
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer__copy {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .footer__bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .footer__bottom-links a {
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.15s;
+  }
+
+  .footer__bottom-links a:hover {
+    color: white;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-top: 48px;
+      padding-bottom: 40px;
+    }
+
+    .footer__bottom-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+</style>

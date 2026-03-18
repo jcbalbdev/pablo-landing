@@ -1,0 +1,190 @@
+/* ===========================
+   DESIGN TOKENS
+   =========================== */
+:root {
+  /* Backgrounds */
+  --bg-page: #F5F3FF;
+  --bg-header: rgba(242, 240, 255, 0.95);
+  --bg-hero: #EEEAFA;
+  --bg-how: #F8F7F9;
+  --bg-pricing: #FFFFFF;
+  --bg-testimonials: #F2EFFF;
+  --bg-faq: #F9F9FB;
+  --bg-footer: #2B2C64;
+
+  /* Text */
+  --color-heading: #2B2C64;
+  --color-body: #56578F;
+  --color-secondary: rgba(45, 27, 105, 0.65);
+  --color-white: #FFFFFF;
+  --color-footer-text: rgba(255, 255, 255, 0.7);
+
+  /* Brand accents */
+  --color-amber: #F5A623;
+  --color-green: #3FA643;
+  --color-navy: #2B2C64;
+  --color-purple: #2D1B69;
+
+  /* Gradients */
+  --gradient-cta: linear-gradient(135deg, #F6B72B 0%, #FBAB21 50%, #FEA41B 100%);
+
+  /* Cards */
+  --card-bg: #F5F4FA;
+  --card-shadow: 0 2px 20px rgba(43, 44, 100, 0.07);
+  --card-shadow-hover: 0 8px 40px rgba(43, 44, 100, 0.13);
+
+  /* Highlight */
+  --highlight-bg: rgba(236, 216, 183, 0.6);
+
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --section-py: 90px;
+  --max-width: 1200px;
+  --gutter: 24px;
+}
+
+/* ===========================
+   RESET
+   =========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-page);
+  color: var(--color-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ===========================
+   LAYOUT
+   =========================== */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ===========================
+   HIGHLIGHT EFFECT
+   =========================== */
+.highlight {
+  position: relative;
+  display: inline;
+  z-index: 0;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: -3px;
+  right: -3px;
+  height: 40%;
+  background: var(--highlight-bg);
+  z-index: -1;
+  border-radius: 3px;
+  transform: rotate(-0.5deg);
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-cta);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.3);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(245, 166, 35, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  background: #EFECF9;
+  color: var(--color-heading);
+  border: 2px solid var(--color-heading);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--color-heading);
+  color: white;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+  :root {
+    --section-py: 60px;
+    --gutter: 20px;
+  }
+}
