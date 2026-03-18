@@ -59,7 +59,7 @@
             Soporte técnico estándar
           </li>
         </ul>
-        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--free" id="pricing-free-cta">Únete a la lista de espera</button>
+        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--free" id="pricing-free-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
       </div>
 
       <!-- PREMIUM PLAN -->
@@ -96,7 +96,7 @@
             Soporte prioritario
           </li>
         </ul>
-        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--premium btn-primary" id="pricing-premium-cta">Únete a la lista de espera</button>
+        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--premium btn-primary" id="pricing-premium-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
       </div>
 
     </div>
@@ -342,6 +342,20 @@
 
     .plan-premium {
       margin-top: 16px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .pricing__title {
+      font-size: 24px;
+    }
+
+    .plan-amount {
+      font-size: 40px;
+    }
+
+    .plan-card {
+      padding: 24px 18px;
     }
   }
 </style>

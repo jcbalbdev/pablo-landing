@@ -55,7 +55,9 @@
 /* ===========================
    RESET
    =========================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -74,7 +76,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   display: block;
 }
@@ -91,7 +94,8 @@ button {
   background: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -134,10 +138,10 @@ ul, ol {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 28px;
-  border-radius: var(--radius-pill);
+  padding: 20px 22px;
+  border-radius: var(--radius-lg);
   background: var(--gradient-cta);
-  color: var(--color-white);
+  color: var(--color-navy);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 16px;
@@ -148,12 +152,22 @@ ul, ol {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(245, 166, 35, 0.45);
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.3);
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: scale(1);
+}
+
+/* Arrow inside btn-primary */
+.btn-primary .btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(5px);
 }
 
 .btn-secondary {
@@ -162,7 +176,7 @@ ul, ol {
   justify-content: center;
   gap: 8px;
   padding: 14px 28px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-lg);
   background: #EFECF9;
   color: var(--color-heading);
   border: 2px solid var(--color-heading);
@@ -182,9 +196,23 @@ ul, ol {
 /* ===========================
    RESPONSIVE
    =========================== */
+@media (max-width: 1024px) {
+  :root {
+    --section-py: 80px;
+    --gutter: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --section-py: 60px;
     --gutter: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --section-py: 48px;
+    --gutter: 16px;
   }
 }

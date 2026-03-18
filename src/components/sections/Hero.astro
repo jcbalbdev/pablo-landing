@@ -1,12 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import mockupImg from '../../assets/wspPabosinshadow.svg';
+import { Image } from "astro:assets";
+import mockupImg from "../../assets/wspPabosinshadow.svg";
 // src/components/sections/Hero.astro
 ---
 
 <section class="hero" id="hero">
   <div class="container hero__inner">
-
     <!-- ── Left content ── -->
     <div class="hero__content">
       <div class="hero__badge-wrapper">
@@ -24,20 +23,32 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
 
       <p class="hero__desc">
         <span class="hero__deco-dot"></span>
-        Conoce a <strong>Pablo</strong>, tu asistente financiero en WhatsApp que te
-        ayuda a ahorrar y controlar tus gastos <strong>con IA y sin estrés</strong>.
+        Conoce a <strong>Pablo</strong>, tu asistente financiero en WhatsApp que
+        te ayuda a ahorrar y controlar tus gastos <strong
+          >con IA y sin estrés</strong
+        >.
       </p>
 
       <div class="hero__ctas">
-        <button onclick="window.openWaitlistModal()" class="btn-primary" id="hero-cta-btn">Únete a la lista de espera 🚀</button>
+        <button
+          onclick="window.openWaitlistModal()"
+          class="btn-primary"
+          id="hero-cta-btn"
+          >Únete a la lista de espera <span class="btn-arrow">→</span></button
+        >
         <a href="#como-funciona" class="btn-secondary">¿Cómo funciona Pablo?</a>
       </div>
 
       <div class="hero__proof">
         <div class="hero__emojis">
-          <span>😊</span><span>🔥</span><span>💚</span><span>✨</span><span>🌟</span>
+          <span>😊</span><span>🔥</span><span>💚</span><span>✨</span><span
+            >🌟</span
+          >
         </div>
-        <p>Controla tus gastos&nbsp;• Cumple tus metas financieras&nbsp;• Sin ansiedad ni preocupaciones</p>
+        <p>
+          Controla tus gastos&nbsp;• Cumple tus metas financieras&nbsp;• Sin
+          ansiedad ni preocupaciones
+        </p>
       </div>
     </div>
 
@@ -46,12 +57,17 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
       <div class="float-badge float-top">¡Ahorraste S/.250! 🎉</div>
 
       <div class="hero__mockup-container">
-        <Image src={mockupImg} alt="Pablo WhatsApp Mockup" class="hero__mockup-img" />
+        <Image
+          src={mockupImg}
+          alt="Pablo WhatsApp Mockup"
+          class="hero__mockup-img"
+        />
       </div>
 
-      <div class="float-badge float-bottom">Cumpliste tu presupuesto semanal ✓</div>
+      <div class="float-badge float-bottom">
+        Cumpliste tu presupuesto semanal ✓
+      </div>
     </div>
-
   </div>
 </section>
 
@@ -89,8 +105,8 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
     gap: 8px;
     padding: 7px 16px;
     border-radius: var(--radius-pill);
-    background: #EEE3DC;
-    border: 1px solid #EFDAB3;
+    background: #eee3dc;
+    border: 1px solid #efdab3;
     font-weight: 600;
     font-size: 14px;
     color: var(--color-heading);
@@ -105,7 +121,7 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
     left: 20px;
     width: 100%;
     height: 100%;
-    border: 1px solid #EFDAB3;
+    border: 1px solid #efdab3;
     border-radius: 18px;
     z-index: 1;
     pointer-events: none;
@@ -131,7 +147,7 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
     position: absolute;
     width: 20px;
     height: 20px;
-    background: #FDEBB4;
+    background: #fdebb4;
     border-radius: 50%;
     left: -40px;
     top: 20px;
@@ -158,8 +174,20 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
 
   .hero__emojis {
     display: flex;
-    gap: 6px;
-    font-size: 20px;
+    gap: -8px;
+    font-size: 22px;
+  }
+
+  .hero__emojis span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(43, 44, 100, 0.1);
+    flex-shrink: 0;
   }
 
   .hero__proof p {
@@ -198,7 +226,7 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
     border-radius: var(--radius-md);
     font-size: 13px;
     font-weight: 600;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     z-index: 10;
     white-space: nowrap;
     animation: float 3s ease-in-out infinite;
@@ -207,8 +235,8 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
   .float-top {
     top: 10px;
     right: 0;
-    background: #DFF6E0;
-    border: 1px solid #C5E6C7;
+    background: #dff6e0;
+    border: 1px solid #c5e6c7;
     color: #1a6e24;
     animation-delay: 0s;
   }
@@ -216,32 +244,60 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
   .float-bottom {
     bottom: 40px;
     left: -10px;
-    background: #FBF1DA;
-    border: 1px solid #E8D9B8;
+    background: #fbf1da;
+    border: 1px solid #e8d9b8;
     color: #7a5c1a;
     animation-delay: 1.5s;
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
   }
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
+    .hero {
+      padding: 80px 0 80px;
+    }
+
+    .hero__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 27px;
+    }
+
     .hero__title {
-      font-size: 48px;
+      font-size: 44px;
+    }
+
+    .hero__mockup-container {
+      width: 280px;
+    }
+
+    #hero-cta-btn {
+      height: 64px;
+      min-width: auto;
+      max-width: none;
+      width: auto;
+      padding: 20px 22px;
+      border-radius: 24px;
+      gap: 8px;
     }
   }
 
   @media (max-width: 768px) {
     .hero {
-      padding: 60px 0 60px;
+      padding: 60px 0 50px;
     }
 
     .hero__inner {
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 40px;
     }
 
     .hero__content {
@@ -254,7 +310,7 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
     }
 
     .hero__title {
-      font-size: 36px;
+      font-size: 34px;
     }
 
     .hero__desc {
@@ -297,6 +353,29 @@ import mockupImg from '../../assets/wspPabosinshadow.svg';
 
     .float-bottom {
       left: 0;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .hero {
+      padding: 48px 0 40px;
+    }
+
+    .hero__title {
+      font-size: 28px;
+    }
+
+    .hero__desc {
+      font-size: 15px;
+    }
+
+    .hero__mockup-container {
+      width: 220px;
+    }
+
+    .float-badge {
+      font-size: 11px;
+      padding: 8px 12px;
     }
   }
 </style>

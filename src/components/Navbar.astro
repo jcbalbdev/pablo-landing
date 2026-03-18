@@ -31,7 +31,7 @@ import logoImg from '../assets/Logo.png';
     <a href="#como-funciona" class="nav-link">Cómo funciona</a>
     <a href="#planes" class="nav-link">Planes</a>
     <div class="mobile-actions">
-      <button onclick="window.openWaitlistModal()" class="btn-primary" id="navbar-mobile-cta-btn">Únete a la lista de espera 🚀</button>
+      <button onclick="window.openWaitlistModal()" class="btn-primary" id="navbar-mobile-cta-btn">Únete a la lista de espera <span class="btn-arrow">→</span></button>
     </div>
   </div>
 </header>
@@ -198,6 +198,20 @@ import logoImg from '../assets/Logo.png';
   }
 
   /* Responsive */
+  @media (max-width: 1024px) {
+    .navbar__nav,
+    .navbar__actions {
+      display: flex;
+    }
+
+    .btn-sm {
+      padding: 12px 16px !important;
+      font-size: 14px !important;
+      border-radius: 12px !important;
+      gap: 8px;
+    }
+  }
+
   @media (max-width: 768px) {
     .navbar__nav,
     .navbar__actions {
