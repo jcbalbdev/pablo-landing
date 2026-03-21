@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import mockupImg from "../../assets/wspPabosinshadow.svg";
+import { CTA, IS_LIVE } from "../../siteConfig";
 // src/components/sections/Hero.astro
 ---
 
@@ -30,12 +31,15 @@ import mockupImg from "../../assets/wspPabosinshadow.svg";
       </p>
 
       <div class="hero__ctas">
-        <button
-          onclick="window.openWaitlistModal()"
-          class="btn-primary"
-          id="hero-cta-btn"
-          >Únete a la lista de espera <span class="btn-arrow">→</span></button
-        >
+        {IS_LIVE
+          ? <a href={CTA.href!} class="btn-primary" id="hero-cta-btn">{CTA.label} <span class="btn-arrow">→</span></a>
+          : <button
+              onclick="window.openWaitlistModal()"
+              class="btn-primary"
+              id="hero-cta-btn"
+              >{CTA.label} <span class="btn-arrow">→</span></button
+            >
+        }
         <a href="#como-funciona" class="btn-secondary">¿Cómo funciona Pablo?</a>
       </div>
 
@@ -330,7 +334,13 @@ import mockupImg from "../../assets/wspPabosinshadow.svg";
       width: 100%;
     }
 
-    .hero__ctas a {
+    .hero__ctas a,
+    .hero__ctas button {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    #hero-cta-btn {
       width: 100%;
       max-width: 320px;
     }

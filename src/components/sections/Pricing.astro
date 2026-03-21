@@ -1,4 +1,7 @@
 ---
+import { IS_LIVE, STRIPE_URLS } from '../../siteConfig';
+import iconPremiumRaw from '../../assets/icon-premium.svg?raw';
+import coronaRaw from '../../assets/corona-premium.svg?raw';
 // src/components/sections/Pricing.astro
 ---
 
@@ -22,82 +25,156 @@
     <!-- Cards -->
     <div class="pricing__cards">
 
-      <!-- FREE PLAN -->
-      <div class="plan-card plan-free">
-        <div class="plan-header">
-          <div class="plan-icon plan-icon--outline">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    {IS_LIVE ? (
+      <>
+        <!-- LIVE: Monthly Plan -->
+        <div class="plan-card plan-premium">
+          <div class="plan-header">
+            <div class="plan-icon plan-icon--amber">
+              <span class="icon-premium" set:html={iconPremiumRaw}></span>
+            </div>
+            <h3 class="plan-name">Pablo Premium</h3>
           </div>
-          <h3 class="plan-name">Pablo gratis</h3>
+          <p class="plan-tagline">
+            Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+          </p>
+          <div class="plan-price">
+            <span class="plan-amount">S/.20</span>
+            <span class="plan-period">/mensuales</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Registro ilimitado con texto, audio o foto desde Whatsapp
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Presupuestos y categorías personalizada
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Metas de ahorro para mantener tu motivación
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Análisis y consejos por sin tecnicismos
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Control automático de tus pagos recurrentes
+            </li>
+          </ul>
+          <button onclick={`window.openSubscribeModal('${STRIPE_URLS.monthly}')`} class="plan-cta plan-cta--premium btn-primary" id="pricing-monthly-cta">
+            Suscríbete a Premium
+          </button>
         </div>
-        <p class="plan-tagline">
-          Empieza a organizar tu dinero con Pablo en WhatsApp, simple, cercano y 100% gratis.
-        </p>
-        <div class="plan-price">
-          <span class="plan-amount">S/.0</span>
-          <span class="plan-period">siempre</span>
-        </div>
-        <ul class="plan-features">
-          <li>
-            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Registro ilimitado de gastos e ingresos por texto
-          </li>
-          <li>
-            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Hasta 5 registros por voz y foto al mes
-          </li>
-          <li>
-            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Tips financieros semanales
-          </li>
-          <li>
-            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Reportes básicos de gastos
-          </li>
-          <li>
-            <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Soporte técnico estándar
-          </li>
-        </ul>
-        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--free" id="pricing-free-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
-      </div>
 
-      <!-- PREMIUM PLAN -->
-      <div class="plan-card plan-premium">
-        <div class="plan-best-badge">🏆 Tu mejor opción</div>
-        <div class="plan-header">
-          <div class="plan-icon plan-icon--amber">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 3l-4 6 10 13L22 9 18 3H6z" stroke="#2B2C64" stroke-width="1.8"/><polyline points="2 9 12 22 22 9" stroke="#2B2C64" stroke-width="1.8"/><line x1="6" y1="3" x2="12" y2="9" stroke="#2B2C64" stroke-width="1.8"/><line x1="18" y1="3" x2="12" y2="9" stroke="#2B2C64" stroke-width="1.8"/></svg>
+        <!-- LIVE: Annual Plan -->
+        <div class="plan-card plan-premium plan-annual">
+          <div class="plan-best-badge">
+            <span class="icon-corona" set:html={coronaRaw}></span>
+            Tu mejor opción
           </div>
-          <h3 class="plan-name">Pablo Premium</h3>
+          <div class="plan-header">
+            <div class="plan-icon plan-icon--amber">
+              <span class="icon-premium" set:html={iconPremiumRaw}></span>
+            </div>
+            <h3 class="plan-name">Pablo Premium</h3>
+          </div>
+          <p class="plan-tagline">
+            Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+          </p>
+          <div class="plan-price">
+            <span class="plan-amount">S/.120</span>
+            <span class="plan-period">/anuales</span>
+          </div>
+          <div class="plan-original-price">
+            <span class="plan-crossed">S/.200</span>
+            <span class="plan-discount-badge">✨ 40% OFF · Oferta preventa</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Todo lo incluido en el plan Mensual.
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              50% de descuento exclusivo por preventa.
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Ahorras 6 meses de suscripción al instante.
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Un año entero de tranquilidad, sin renovación mensual.
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Acompañamiento a largo plazo para asegurar que cumplas tus metas.
+            </li>
+          </ul>
+          <button onclick={`window.openSubscribeModal('${STRIPE_URLS.annual}')`} class="plan-cta plan-cta--premium btn-primary" id="pricing-annual-cta">
+            Suscríbete a Premium
+          </button>
         </div>
-        <p class="plan-tagline">
-          Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
-        </p>
-        <div class="plan-price">
-          <span class="plan-amount">S/.20</span>
-          <span class="plan-period">/mensuales</span>
+      </>
+    ) : (
+      <>
+        <!-- WAITLIST: Free Plan -->
+        <div class="plan-card plan-free">
+          <div class="plan-header">
+            <div class="plan-icon plan-icon--outline">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="plan-name">Pablo gratis</h3>
+          </div>
+          <p class="plan-tagline">
+            Empieza a organizar tu dinero con Pablo en WhatsApp, simple, cercano y 100% gratis.
+          </p>
+          <div class="plan-price">
+            <span class="plan-amount">S/.0</span>
+            <span class="plan-period">siempre</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Registro ilimitado de gastos e ingresos por texto</li>
+            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 registros por voz y foto al mes</li>
+            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tips financieros semanales</li>
+            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reportes básicos de gastos</li>
+            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte técnico estándar</li>
+          </ul>
+          <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--free" id="pricing-free-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
         </div>
-        <ul class="plan-features">
-          <li>
-            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Todo lo que incluye Pablo Gratis, y además:
-          </li>
-          <li>
-            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Automatización de registros ilimitados vía texto, voz y foto
-          </li>
-          <li>
-            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Acceso a Pablo Web con reportes completos y seguimiento de metas financieras
-          </li>
-          <li>
-            <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Soporte prioritario
-          </li>
-        </ul>
-        <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--premium btn-primary" id="pricing-premium-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
-      </div>
+
+        <!-- WAITLIST: Premium Plan -->
+        <div class="plan-card plan-premium">
+          <div class="plan-best-badge">
+            <span class="icon-corona" set:html={coronaRaw}></span>
+            Tu mejor opción
+          </div>
+          <div class="plan-header">
+            <div class="plan-icon plan-icon--amber">
+              <span class="icon-premium" set:html={iconPremiumRaw}></span>
+            </div>
+            <h3 class="plan-name">Pablo Premium</h3>
+          </div>
+          <p class="plan-tagline">
+            Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+          </p>
+          <div class="plan-price">
+            <span class="plan-amount">S/.20</span>
+            <span class="plan-period">/mensuales</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo que incluye Pablo Gratis, y además:</li>
+            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Automatización de registros ilimitados vía texto, voz y foto</li>
+            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acceso a Pablo Web con reportes completos y seguimiento de metas financieras</li>
+            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
+          </ul>
+          <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--premium btn-primary" id="pricing-premium-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
+        </div>
+      </>
+    )}
 
     </div>
 
@@ -160,7 +237,7 @@
     gap: 24px;
     width: 100%;
     max-width: 900px;
-    align-items: start;
+    align-items: stretch;
   }
 
   /* Base card */
@@ -171,6 +248,8 @@
     flex-direction: column;
     gap: 16px;
     position: relative;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   .plan-free {
@@ -188,14 +267,18 @@
   /* Best badge */
   .plan-best-badge {
     position: absolute;
-    top: -14px;
-    right: 24px;
-    background: var(--color-amber);
-    color: white;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #F6B72B 0%, #FBAB21 58%, #FEA41B 100%);
+    color: #2B2C64;
     font-weight: 700;
-    font-size: 12px;
-    padding: 4px 14px;
-    border-radius: var(--radius-pill);
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 0 var(--radius-md) 0 var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.01em;
   }
 
   /* Plan icon */
@@ -214,8 +297,34 @@
   }
 
   .plan-icon--amber {
-    background: linear-gradient(135deg, #FEF3DA 0%, #FDE8B0 100%);
-    border: 1.5px solid #F5C970;
+    background: linear-gradient(135deg, #F6B72B 0%, #FBAB21 58%, #FEA41B 100%);
+    border: none;
+  }
+
+  .icon-corona {
+    display: inline-flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .icon-corona svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .icon-premium {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
+
+  .icon-premium svg {
+    width: 28px;
+    height: 28px;
   }
 
   /* Plan name */
@@ -254,12 +363,38 @@
     font-weight: 500;
   }
 
+  /* Strikethrough price row (annual live plan) */
+  .plan-original-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: -6px;
+  }
+
+  .plan-crossed {
+    font-size: 16px;
+    color: var(--color-secondary);
+    text-decoration: line-through;
+    font-weight: 500;
+  }
+
+  .plan-discount-badge {
+    background: #FEF3DA;
+    color: #875A00;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    border: 1px solid #F5C970;
+  }
+
   /* Features list */
   .plan-features {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin: 4px 0;
+    flex-grow: 1;
   }
 
   .plan-features li {

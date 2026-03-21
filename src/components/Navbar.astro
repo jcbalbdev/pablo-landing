@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logoImg from '../assets/Logo.png';
+import { CTA, IS_LIVE } from '../siteConfig';
 // src/components/Navbar.astro
 ---
 
@@ -17,7 +18,10 @@ import logoImg from '../assets/Logo.png';
     </nav>
 
     <div class="navbar__actions">
-      <button onclick="window.openWaitlistModal()" class="btn-primary btn-sm" id="navbar-cta-btn">Únete a la lista de espera</button>
+      {IS_LIVE
+        ? <a href={CTA.href!} class="btn-primary btn-sm" id="navbar-cta-btn">{CTA.label} <span class="btn-arrow">→</span></a>
+        : <button onclick="window.openWaitlistModal()" class="btn-primary btn-sm" id="navbar-cta-btn">{CTA.label} <span class="btn-arrow">→</span></button>
+      }
     </div>
 
     <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
@@ -31,7 +35,10 @@ import logoImg from '../assets/Logo.png';
     <a href="#como-funciona" class="nav-link">Cómo funciona</a>
     <a href="#planes" class="nav-link">Planes</a>
     <div class="mobile-actions">
-      <button onclick="window.openWaitlistModal()" class="btn-primary" id="navbar-mobile-cta-btn">Únete a la lista de espera <span class="btn-arrow">→</span></button>
+      {IS_LIVE
+        ? <a href={CTA.href!} class="btn-primary" id="navbar-mobile-cta-btn">{CTA.label} <span class="btn-arrow">→</span></a>
+        : <button onclick="window.openWaitlistModal()" class="btn-primary" id="navbar-mobile-cta-btn">{CTA.label} <span class="btn-arrow">→</span></button>
+      }
     </div>
   </div>
 </header>

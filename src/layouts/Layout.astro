@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import SubscribeModal from '../components/SubscribeModal.astro';
+import { IS_LIVE } from '../siteConfig';
 
 interface Props {
   title?: string;
@@ -60,5 +62,6 @@ const ogImage = `${siteUrl}/Logo.png`;
   </head>
   <body>
     <slot />
+    {IS_LIVE && <SubscribeModal />}
   </body>
 </html>

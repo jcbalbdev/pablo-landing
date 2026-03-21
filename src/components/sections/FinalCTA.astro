@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logoImg from '../../assets/Logo.png';
+import { IS_LIVE, CTA } from '../../siteConfig';
 // src/components/sections/FinalCTA.astro
 ---
 
@@ -14,7 +15,10 @@ import logoImg from '../../assets/Logo.png';
       Pablo te ayuda a entender tus gastos, ahorrar mejor y dejar atrás el estrés financiero.
       <strong>Todo desde WhatsApp, sin complicarte.</strong>
     </p>
-    <button onclick="window.openWaitlistModal()" class="btn-primary fcta__cta" id="finalcta-btn">Únete a la lista de espera <span class="btn-arrow">→</span></button>
+    {IS_LIVE
+      ? <a href={CTA.href!} class="btn-primary fcta__cta" id="finalcta-btn">{CTA.label} <span class="btn-arrow">→</span></a>
+      : <button onclick="window.openWaitlistModal()" class="btn-primary fcta__cta" id="finalcta-btn">{CTA.label} <span class="btn-arrow">→</span></button>
+    }
   </div>
 </section>
 
