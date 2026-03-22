@@ -3,7 +3,7 @@
 //  'waitlist' → botones abren el modal de lista de espera
 //  'live'     → botones llevan a la sección #planes
 // ============================================================
-export const SITE_MODE: 'waitlist' | 'live' = 'waitlist';
+export const SITE_MODE: 'waitlist' | 'live' = 'live';
 
 // Configuración de cada modo
 export const CTA_CONFIG = {
