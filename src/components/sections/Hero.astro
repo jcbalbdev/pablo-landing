@@ -31,14 +31,20 @@ import { CTA, IS_LIVE } from "../../siteConfig";
       </p>
 
       <div class="hero__ctas">
-        {IS_LIVE
-          ? <a href={CTA.href!} class="btn-primary" id="hero-cta-btn">{CTA.label} <span class="btn-arrow">→</span></a>
-          : <button
+        {
+          IS_LIVE ? (
+            <a href={CTA.href!} class="btn-primary" id="hero-cta-btn">
+              {CTA.label} <span class="btn-arrow">→</span>
+            </a>
+          ) : (
+            <button
               onclick="window.openWaitlistModal()"
               class="btn-primary"
               id="hero-cta-btn"
-              >{CTA.label} <span class="btn-arrow">→</span></button
             >
+              {CTA.label} <span class="btn-arrow">→</span>
+            </button>
+          )
         }
         <a href="#como-funciona" class="btn-secondary">¿Cómo funciona Pablo?</a>
       </div>
@@ -78,7 +84,7 @@ import { CTA, IS_LIVE } from "../../siteConfig";
 <style>
   .hero {
     background: var(--bg-hero);
-    padding: 100px 0 80px;
+    padding: 60px 0 80px;
     overflow: hidden;
   }
 
