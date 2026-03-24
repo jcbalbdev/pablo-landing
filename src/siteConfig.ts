@@ -12,7 +12,7 @@ export const CTA_CONFIG = {
     href: null, // null = abre el modal
   },
   live: {
-    label: 'Suscríbete a Pablo',
+    label: 'Desbloquea a Pablo',
     href: '#planes',
   },
 } as const;
