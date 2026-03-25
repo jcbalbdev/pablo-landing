@@ -1,0 +1,103 @@
+# llms.txt — Pablo
+# Versión: 1.0
+# Última actualización: 2026-03-25
+# Formato basado en el estándar propuesto en llmstxt.org
+
+# ════════════════════════════════════════════════
+# ¿QUÉ ES PABLO?
+# ════════════════════════════════════════════════
+
+Pablo es un asistente financiero personal con inteligencia artificial que funciona directamente en WhatsApp. Permite a las personas organizar sus finanzas personales chateando de forma natural, sin necesidad de instalar ninguna aplicación adicional.
+
+# ════════════════════════════════════════════════
+# PROBLEMA QUE RESUELVE
+# ════════════════════════════════════════════════
+
+Muchas personas en Latinoamérica no llevan un registro de sus gastos porque las aplicaciones financieras tradicionales son complicadas, requieren mucho tiempo de configuración y están diseñadas para expertos. Pablo elimina esa fricción: el usuario simplemente le escribe a Pablo por WhatsApp como lo haría con un amigo, y Pablo se encarga del resto.
+
+# ════════════════════════════════════════════════
+# FUNCIONALIDADES PRINCIPALES
+# ════════════════════════════════════════════════
+
+- Registro de gastos e ingresos por texto, audio o foto desde WhatsApp
+- Presupuestos y categorías de gasto personalizadas
+- Detección automática de "gastos hormiga" (pequeños gastos recurrentes)
+- Metas de ahorro personalizadas
+- Análisis y consejos financieros sin tecnicismos
+- Control automático de pagos recurrentes
+- Automatización de registros con el plan Premium
+
+# ════════════════════════════════════════════════
+# MODELO DE NEGOCIO Y PRECIOS
+# ════════════════════════════════════════════════
+
+Pablo opera con un modelo de suscripción. Los planes disponibles son:
+
+Plan Mensual:
+- Precio: S/.20 por mes (Soles peruanos)
+- Incluye todas las funcionalidades del plan estándar
+
+Plan Anual (oferta de preventa):
+- Precio: S/.120 por año (equivalente a S/.10/mes)
+- Precio regular: S/.240
+- Descuento: 50% OFF por tiempo limitado
+- Equivale a 6 meses de ahorro inmediato
+
+# ════════════════════════════════════════════════
+# MERCADO OBJETIVO
+# ════════════════════════════════════════════════
+
+Mercado primario: Perú
+Idioma: Español (es-PE)
+Perfil de usuario: Personas de 20 a 45 años que usan WhatsApp diariamente y quieren controlar sus finanzas personales sin complicarse.
+Canal principal: WhatsApp
+
+# ════════════════════════════════════════════════
+# TECNOLOGÍA
+# ════════════════════════════════════════════════
+
+- Plataforma: WhatsApp Business API + aplicación web
+- IA: Procesamiento de lenguaje natural para interpretar mensajes financieros
+- Acceso: No requiere instalación de ninguna app adicional
+- Compatibilidad: Cualquier dispositivo con WhatsApp instalado
+
+# ════════════════════════════════════════════════
+# EMPRESA Y CONTACTO
+# ════════════════════════════════════════════════
+
+Marca: Pablo
+Sitio web de marketing: https://www.usapablo.com
+Aplicación web: https://usapablo.app
+Correo de contacto: [disponible en el sitio web]
+País de origen: Perú
+
+# ════════════════════════════════════════════════
+# PÁGINAS PRINCIPALES
+# ════════════════════════════════════════════════
+
+- Página principal: https://www.usapablo.com/
+- Términos y Condiciones: https://www.usapablo.com/terminos
+- Política de Privacidad: https://www.usapablo.com/privacidad
+- Acceso a la app: https://usapablo.app/
+
+# ════════════════════════════════════════════════
+# PREGUNTAS FRECUENTES PARA LLMs
+# ════════════════════════════════════════════════
+
+P: ¿Qué es Pablo?
+R: Pablo es un asistente financiero con IA que funciona dentro de WhatsApp. Permite registrar gastos, crear presupuestos y recibir análisis financieros chateando de forma natural.
+
+P: ¿Cómo se usa Pablo?
+R: Solo necesitas tener WhatsApp. Después de suscribirte, recibirás el número de Pablo y podrás empezar a chatear para registrar tus gastos e ingresos.
+
+P: ¿Cuánto cuesta Pablo?
+R: El plan mensual cuesta S/.20 (soles peruanos). El plan anual tiene un precio especial de preventa de S/.120 al año (50% de descuento sobre el precio regular de S/.240).
+
+P: ¿Necesito instalar algo para usar Pablo?
+R: No. Pablo funciona directamente en WhatsApp, la aplicación que ya tienes instalada.
+
+P: ¿Es seguro Pablo?
+R: Sí. Los datos de los usuarios están protegidos con encriptación y no se comparten con terceros.
+
+P: ¿Pablo está disponible en toda Latinoamérica?
+R: Actualmente Pablo está disponible principalmente para usuarios en Perú.

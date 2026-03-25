@@ -1,0 +1,49 @@
+# robots.txt — usapablo.com
+# Generado el 2026-03-25
+
+# Permitir todos los crawlers estándar
+User-agent: *
+Allow: /
+
+# No indexar páginas de acceso directo a la app
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://www.usapablo.com/sitemap-index.xml
+
+# ────────────────────────────────────
+# Crawlers de IA — se permite el rastreo
+# para mejorar la visibilidad en LLMs
+# ────────────────────────────────────
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# OpenAI browsing plugin
+User-agent: ChatGPT-User
+Allow: /
+
+# Google Gemini / Bard
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Common Crawl (fuente de entrenamiento de muchos LLMs)
+User-agent: CCBot
+Allow: /
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /

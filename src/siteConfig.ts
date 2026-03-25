@@ -22,6 +22,11 @@ export const CTA = CTA_CONFIG[SITE_MODE];
 export const IS_LIVE = SITE_MODE === 'live';
 
 // ============================================================
+//  APP LINKS
+// ============================================================
+export const APP_URL = 'https://usapablo.app/';
+
+// ============================================================
 //  STRIPE LINKS — URLs de pago de Stripe
 // ============================================================
 export const STRIPE_URLS = {
