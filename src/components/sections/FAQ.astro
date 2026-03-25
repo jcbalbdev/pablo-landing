@@ -4,19 +4,23 @@
 const faqs = [
   {
     question: "¿Pablo es gratis?",
-    answer: "¡Sí! Nuestro plan gratuito te da todo lo que necesitas para empezar a manejar mejor tu dinero. Las funciones Premium están disponibles para quienes quieran llevarlo al siguiente nivel.",
+    answer:
+      "No, por ahora, Pablo solo está disponible en su versión premium, que incluye todo lo que necesitas para manejar tu dinero de manera simple y sin estrés.",
   },
   {
     question: "¿Cómo protege Pablo mis datos?",
-    answer: "Tus datos están protegidos con encriptación de nivel bancario. No compartimos tu información con terceros.",
+    answer:
+      "Tus datos están protegidos con encriptacion. No compartimos tu información con terceros.",
   },
   {
     question: "¿Necesito instalar algo?",
-    answer: "No necesitas instalar nada. Pablo funciona directamente en WhatsApp, la app que ya usas todos los días.",
+    answer:
+      "No necesitas instalar nada. Pablo funciona directamente en WhatsApp, la app que ya usas todos los días.",
   },
   {
     question: "¿Cómo empiezo?",
-    answer: "Solo haz clic en 'Empieza Gratis con Pablo' y estarás chateando con Pablo en segundos. Sin formularios, sin tarjeta de crédito.",
+    answer:
+      "Solo haz clic en 'Desbloquea a Pablo' y estarás chateando con Pablo en segundos. Sin formularios, sin tarjeta de crédito.",
   },
 ];
 ---
@@ -31,30 +35,41 @@ const faqs = [
     </div>
 
     <div class="faq__list" role="list">
-      {faqs.map((faq, i) => (
-        <div class="faq-item" role="listitem">
-          <button
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls={`faq-answer-${i}`}
-            id={`faq-btn-${i}`}
-          >
-            <span>{faq.question}</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div
-            class="faq-answer"
-            id={`faq-answer-${i}`}
-            role="region"
-            aria-labelledby={`faq-btn-${i}`}
-            hidden
-          >
-            <p>{faq.answer}</p>
+      {
+        faqs.map((faq, i) => (
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-btn-${i}`}
+            >
+              <span>{faq.question}</span>
+              <svg
+                class="faq-chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div
+              class="faq-answer"
+              id={`faq-answer-${i}`}
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+              hidden
+            >
+              <p>{faq.answer}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
@@ -149,8 +164,14 @@ const faqs = [
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @media (max-width: 768px) {
@@ -165,23 +186,23 @@ const faqs = [
 </style>
 
 <script>
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-      const answerId = button.getAttribute('aria-controls')!;
+  document.querySelectorAll(".faq-question").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      const answerId = button.getAttribute("aria-controls")!;
       const answer = document.getElementById(answerId);
 
       // Close all others
-      document.querySelectorAll('.faq-question').forEach(b => {
-        b.setAttribute('aria-expanded', 'false');
-        const id = b.getAttribute('aria-controls')!;
+      document.querySelectorAll(".faq-question").forEach((b) => {
+        b.setAttribute("aria-expanded", "false");
+        const id = b.getAttribute("aria-controls")!;
         const a = document.getElementById(id);
         if (a) a.hidden = true;
       });
 
       // Toggle current
       if (!isExpanded) {
-        button.setAttribute('aria-expanded', 'true');
+        button.setAttribute("aria-expanded", "true");
         if (answer) answer.hidden = false;
       }
     });
