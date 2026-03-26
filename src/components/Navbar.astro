@@ -20,7 +20,7 @@ import { CTA, IS_LIVE, APP_URL } from '../siteConfig';
 
     <div class="navbar__actions">
       {IS_LIVE
-        ? <a href={CTA.href!} class="btn-primary btn-sm" id="navbar-cta-btn">{CTA.label} <span class="btn-arrow">→</span></a>
+        ? <a href={CTA.href!} class="btn-primary btn-sm" id="navbar-cta-btn" onclick="if(typeof fbq!=='undefined')fbq('trackCustom','Ver_Planes');">{CTA.label} <span class="btn-arrow">→</span></a>
         : <button onclick="window.openWaitlistModal()" class="btn-primary btn-sm" id="navbar-cta-btn">{CTA.label} <span class="btn-arrow">→</span></button>
       }
     </div>

@@ -484,9 +484,21 @@ import iconPremiumRaw from '../assets/icon-premium.svg?raw';
   document.getElementById('smodal-check-terms')?.addEventListener('change', updateBtn);
   document.getElementById('smodal-check-privacy')?.addEventListener('change', updateBtn);
 
-  // On click: go to Stripe payment URL in new tab
+  // On click: fire Meta Pixel InitiateCheckout + go to Stripe
   document.getElementById('smodal-register-btn')?.addEventListener('click', () => {
-    if (_stripeUrl) window.open(_stripeUrl, '_blank');
+    if (_stripeUrl) {
+      // Fire Meta Pixel InitiateCheckout with correct plan value
+      const plan = (window as any).planSeleccionado;
+      if (typeof (window as any).fbq !== 'undefined' && plan) {
+        (window as any).fbq('track', 'InitiateCheckout', {
+          content_name: plan.name,
+          value: plan.value,
+          currency: 'PEN',
+          num_items: 1,
+        });
+      }
+      window.open(_stripeUrl, '_blank');
+    }
   });
 
   document.addEventListener('keydown', (e) => {

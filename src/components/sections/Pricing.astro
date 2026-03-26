@@ -64,7 +64,11 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
               Control automático de tus pagos recurrentes
             </li>
           </ul>
-          <button onclick={`window.openSubscribeModal('${STRIPE_URLS.monthly}')`} class="plan-cta plan-cta--premium btn-primary" id="pricing-monthly-cta">
+          <button
+            onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
+            class="plan-cta plan-cta--premium btn-primary"
+            id="pricing-monthly-cta"
+          >
             Desbloquea a Pablo
           </button>
         </div>
@@ -114,7 +118,11 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
               Acompañamiento a largo plazo para asegurar que cumplas tus metas.
             </li>
           </ul>
-          <button onclick={`window.openSubscribeModal('${STRIPE_URLS.annual}')`} class="plan-cta plan-cta--premium btn-primary" id="pricing-annual-cta">
+          <button
+            onclick={`window.planSeleccionado={name:'Plan Anual',value:120};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
+            class="plan-cta plan-cta--premium btn-primary"
+            id="pricing-annual-cta"
+          >
             Desbloquea a Pablo
           </button>
         </div>

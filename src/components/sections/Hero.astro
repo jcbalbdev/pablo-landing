@@ -33,12 +33,17 @@ import { CTA, IS_LIVE } from "../../siteConfig";
       <div class="hero__ctas">
         {
           IS_LIVE ? (
-            <a href={CTA.href!} class="btn-primary" id="hero-cta-btn">
-              {CTA.label} <span class="btn-arrow">→</span>
-            </a>
+          <a
+            href={CTA.href!}
+            class="btn-primary"
+            id="hero-cta-btn"
+            onclick="if(typeof fbq!=='undefined')fbq('trackCustom','Ver_Planes');"
+          >
+            {CTA.label} <span class="btn-arrow">→</span>
+          </a>
           ) : (
             <button
-              onclick="window.openWaitlistModal()"
+              onclick="window.openWaitlistModal();"
               class="btn-primary"
               id="hero-cta-btn"
             >
