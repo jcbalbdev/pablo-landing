@@ -95,12 +95,12 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
             Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
           </p>
           <div class="plan-price">
-            <span class="plan-amount">S/.120</span>
+            <span class="plan-amount">S/.200</span>
             <span class="plan-period">/anuales</span>
           </div>
           <div class="plan-original-price">
             <span class="plan-crossed">S/.240</span>
-            <span class="plan-discount-badge">✨ 50% OFF · Oferta preventa</span>
+            <span class="plan-discount-badge">✨ 16% OFF · Oferta por temporada</span>
           </div>
           <ul class="plan-features">
             <li>
@@ -109,11 +109,11 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
             </li>
             <li>
               <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              50% de descuento exclusivo por preventa.
+              16% de descuento exclusivo por temporada.
             </li>
             <li>
               <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Ahorras 6 meses de suscripción al instante.
+              Ahorras 2 meses de suscripción al instante.
             </li>
             <li>
               <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -126,7 +126,7 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
           </ul>
           {OFFER_AVAILABLE ? (
             <button
-              onclick={`window.planSeleccionado={name:'Plan Anual',value:120};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
+              onclick={`window.planSeleccionado={name:'Plan Anual',value:200};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
               class="plan-cta plan-cta--premium btn-primary"
               id="pricing-annual-cta"
             >

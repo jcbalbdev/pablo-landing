@@ -10,7 +10,7 @@ export const SITE_MODE: 'waitlist' | 'live' = 'live';
 //  true  → botones de los planes funcionan con normalidad
 //  false → botones se reemplazan por "Oferta no disponible"
 // ============================================================
-export const OFFER_AVAILABLE = false;
+export const OFFER_AVAILABLE = true;
 
 // Configuración de cada modo
 export const CTA_CONFIG = {
@@ -38,5 +38,5 @@ export const APP_URL = 'https://usapablo.app/';
 // ============================================================
 export const STRIPE_URLS = {
   monthly: 'https://buy.stripe.com/9B628s8Hr8Za7LU2251sQ0n', // S/.20/mes
-  annual: 'https://buy.stripe.com/cNidRa9Lv2AM2rAayB1sQ0o', // S/.120/año
+  annual: 'https://buy.stripe.com/7sY00kbTDb7id6e7mp1sQ0q', // S/.200/año
 };
