@@ -1,5 +1,5 @@
 ---
-import { IS_LIVE, STRIPE_URLS } from '../../siteConfig';
+import { IS_LIVE, STRIPE_URLS, OFFER_AVAILABLE } from '../../siteConfig';
 import iconPremiumRaw from '../../assets/icon-premium.svg?raw';
 import coronaRaw from '../../assets/corona-premium.svg?raw';
 // src/components/sections/Pricing.astro
@@ -64,13 +64,19 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
               Control automático de tus pagos recurrentes
             </li>
           </ul>
-          <button
-            onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
-            class="plan-cta plan-cta--premium btn-primary"
-            id="pricing-monthly-cta"
-          >
-            Desbloquea a Pablo
-          </button>
+          {OFFER_AVAILABLE ? (
+            <button
+              onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
+              class="plan-cta plan-cta--premium btn-primary"
+              id="pricing-monthly-cta"
+            >
+              Desbloquea a Pablo
+            </button>
+          ) : (
+            <button class="plan-cta plan-cta--unavailable" disabled id="pricing-monthly-cta">
+              Oferta no disponible
+            </button>
+          )}
         </div>
 
         <!-- LIVE: Annual Plan -->
@@ -118,13 +124,19 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
               Acompañamiento a largo plazo para asegurar que cumplas tus metas.
             </li>
           </ul>
-          <button
-            onclick={`window.planSeleccionado={name:'Plan Anual',value:120};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
-            class="plan-cta plan-cta--premium btn-primary"
-            id="pricing-annual-cta"
-          >
-            Desbloquea a Pablo
-          </button>
+          {OFFER_AVAILABLE ? (
+            <button
+              onclick={`window.planSeleccionado={name:'Plan Anual',value:120};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
+              class="plan-cta plan-cta--premium btn-primary"
+              id="pricing-annual-cta"
+            >
+              Desbloquea a Pablo
+            </button>
+          ) : (
+            <button class="plan-cta plan-cta--unavailable" disabled id="pricing-annual-cta">
+              Oferta no disponible
+            </button>
+          )}
         </div>
       </>
     ) : (
@@ -456,6 +468,16 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
 
   .plan-cta--premium {
     box-shadow: 0 4px 16px rgba(245, 166, 35, 0.35) !important;
+  }
+
+  .plan-cta--unavailable {
+    background: #e8e6ef;
+    border: 1.5px solid #d0cde0;
+    color: #9e9ab5;
+    cursor: not-allowed;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    opacity: 0.85;
   }
 
   /* Note */

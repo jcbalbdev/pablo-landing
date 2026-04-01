@@ -5,6 +5,13 @@
 // ============================================================
 export const SITE_MODE: 'waitlist' | 'live' = 'live';
 
+// ============================================================
+//  OFFER MODE — controla si la oferta de los planes está activa
+//  true  → botones de los planes funcionan con normalidad
+//  false → botones se reemplazan por "Oferta no disponible"
+// ============================================================
+export const OFFER_AVAILABLE = false;
+
 // Configuración de cada modo
 export const CTA_CONFIG = {
   waitlist: {
