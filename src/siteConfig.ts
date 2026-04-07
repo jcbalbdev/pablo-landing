@@ -38,5 +38,5 @@ export const APP_URL = 'https://usapablo.app/';
 // ============================================================
 export const STRIPE_URLS = {
   monthly: 'https://buy.stripe.com/9B628s8Hr8Za7LU2251sQ0n', // S/.20/mes
-  annual: 'https://buy.stripe.com/7sY00kbTDb7id6e7mp1sQ0q', // S/.200/año
+  annual: 'https://buy.stripe.com/3cIaEYcXHcbmd6egWZ1sQ0r', // S/.200/año
 };
