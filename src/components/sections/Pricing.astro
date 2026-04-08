@@ -28,9 +28,9 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
     {IS_LIVE ? (
       <>
         <!-- LIVE: Monthly Plan -->
-        <div class="plan-card plan-premium">
+        <div class="plan-card plan-monthly">
           <div class="plan-header">
-            <div class="plan-icon plan-icon--amber">
+            <div class="plan-icon plan-icon--navy">
               <span class="icon-premium" set:html={iconPremiumRaw}></span>
             </div>
             <h3 class="plan-name">Pablo Premium</h3>
@@ -44,30 +44,30 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
           </div>
           <ul class="plan-features">
             <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Registro ilimitado con texto, audio o foto desde Whatsapp
             </li>
             <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Presupuestos y categorías personalizada
             </li>
             <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Metas de ahorro para mantener tu motivación
             </li>
             <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Análisis y consejos por sin tecnicismos
             </li>
             <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Control automático de tus pagos recurrentes
             </li>
           </ul>
           {OFFER_AVAILABLE ? (
             <button
               onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
-              class="plan-cta plan-cta--premium btn-primary"
+              class="plan-cta plan-cta--monthly"
               id="pricing-monthly-cta"
             >
               Desbloquea a Pablo
@@ -109,6 +109,10 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
             </li>
             <li>
               <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              7 días gratis de prueba.
+            </li>
+            <li>
+              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               16% de descuento exclusivo por temporada.
             </li>
             <li>
@@ -123,6 +127,7 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
               <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Acompañamiento a largo plazo para asegurar que cumplas tus metas.
             </li>
+            
           </ul>
           {OFFER_AVAILABLE ? (
             <button
@@ -130,7 +135,7 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
               class="plan-cta plan-cta--premium btn-primary"
               id="pricing-annual-cta"
             >
-              Desbloquea a Pablo
+              Empieza tu prueba gratis
             </button>
           ) : (
             <button class="plan-cta plan-cta--unavailable" disabled id="pricing-annual-cta">
@@ -278,6 +283,12 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
     box-shadow: var(--card-shadow);
   }
 
+  .plan-monthly {
+    background: #FAFAFE;
+    border: 2px solid #C8C5D6;
+    box-shadow: 0 4px 20px rgba(43, 44, 100, 0.08);
+  }
+
   .plan-premium {
     background: linear-gradient(135deg, #F7ECD4 0%, #E8E6E6 60%, #F3F3F6 100%);
     border: 2px solid var(--color-amber);
@@ -319,6 +330,11 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
   .plan-icon--amber {
     background: linear-gradient(135deg, #F6B72B 0%, #FBAB21 58%, #FEA41B 100%);
     border: none;
+  }
+
+  .plan-icon--navy {
+    background: #EEEDF5;
+    border: 1.5px solid #D8D4F5;
   }
 
   .icon-corona {
@@ -463,6 +479,18 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
 
   .plan-cta--free:hover {
     background: var(--color-heading);
+    color: white;
+  }
+
+  .plan-cta--monthly {
+    background: transparent;
+    border: 2px solid #2B2C64;
+    color: #2B2C64;
+    font-weight: 600;
+  }
+
+  .plan-cta--monthly:hover {
+    background: #2B2C64;
     color: white;
   }
 
