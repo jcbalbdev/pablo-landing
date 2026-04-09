@@ -1,0 +1,413 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import logoModal from '../assets/logodelmodal.png';
+// src/pages/gracias.astro
+---
+
+<Layout
+  title="¡Gracias por tu compra! — Pablo"
+  description="Tu suscripción a Pablo Premium está activa. Comienza a organizar tus finanzas desde WhatsApp ahora mismo."
+>
+  <Navbar />
+
+  <main>
+    <section class="gracias">
+      <!-- Confetti canvas -->
+      <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+
+      <div class="container gracias__inner">
+
+        <!-- Mascot -->
+        <div class="gracias__mascot">
+          <Image src={logoModal} alt="Pablo mascot" class="gracias__mascot-img" width={90} height={90} />
+        </div>
+
+        <h1 class="gracias__title">
+          ¡Bienvenido a <span class="highlight">Pablo Premium</span>! 🎉
+        </h1>
+
+        <p class="gracias__subtitle">
+          Tu suscripción está activa. Ahora tienes acceso ilimitado a todas las herramientas para llevar tus finanzas al siguiente nivel.
+        </p>
+
+        <!-- Next steps card -->
+        <div class="gracias__card">
+          <p class="gracias__card-title">¿Qué sigue ahora?</p>
+          <ol class="gracias__steps">
+            <li>
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <strong>Ingresa a la app de Pablo</strong>
+                <p>Usa el botón de abajo para acceder a tu cuenta y empezar a configurar todo.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <strong>Conecta tu WhatsApp</strong>
+                <p>Desde la app podrás vincular tu número y empezar a registrar gastos por chat.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <strong>¡Listo! Toma el control</strong>
+                <p>Pablo te acompañará a diario para cumplir tus metas financieras.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- CTAs -->
+        <div class="gracias__ctas">
+          <a
+            href="https://usapablo.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary gracias__cta-app"
+            id="gracias-app-btn"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10 17 15 12 10 7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+            Ingresar a la app de Pablo
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="/" class="btn-secondary gracias__cta-home" id="gracias-home-btn">
+            Volver al inicio
+          </a>
+        </div>
+
+        <!-- Trust note -->
+        <p class="gracias__note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Recibirás un correo de confirmación con los detalles de tu suscripción.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .gracias {
+    background: var(--bg-hero);
+    padding: 60px 0 100px;
+    min-height: calc(100vh - 72px - 200px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gracias__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+
+  /* ── Mascot ── */
+  .gracias__mascot {
+    width: 90px;
+    height: 90px;
+    animation: floatMascot 3s ease-in-out infinite;
+  }
+
+  .gracias__mascot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @keyframes floatMascot {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ── Title ── */
+  .gracias__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.1;
+    color: var(--color-heading);
+    animation: fadeUp 0.6s 0.2s both;
+  }
+
+  .gracias__subtitle {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-body);
+    max-width: 520px;
+    animation: fadeUp 0.6s 0.35s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Steps card ── */
+  .gracias__card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--card-shadow);
+    animation: fadeUp 0.6s 0.5s both;
+  }
+
+  .gracias__card-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--color-heading);
+    text-align: center;
+  }
+
+  .gracias__steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .gracias__steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gradient-cta);
+    color: var(--color-navy);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 3px 12px rgba(245, 166, 35, 0.25);
+  }
+
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 4px;
+  }
+
+  .step-content strong {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-heading);
+  }
+
+  .step-content p {
+    font-size: 14px;
+    color: var(--color-body);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .step-content em {
+    font-style: italic;
+    color: var(--color-heading);
+    font-weight: 500;
+  }
+
+  /* ── CTAs ── */
+  .gracias__ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeUp 0.6s 0.65s both;
+  }
+
+  .gracias__cta-app {
+    font-size: 17px;
+    padding: 18px 28px;
+    gap: 10px;
+  }
+
+  .gracias__cta-home {
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+
+  /* ── Note ── */
+  .gracias__note {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--color-secondary);
+    font-weight: 500;
+    animation: fadeUp 0.6s 0.8s both;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .gracias {
+      padding: 40px 0 80px;
+    }
+
+    .gracias__title {
+      font-size: 30px;
+    }
+
+    .gracias__subtitle {
+      font-size: 15px;
+    }
+
+    .gracias__card {
+      padding: 24px 20px;
+    }
+
+    .gracias__cta-app {
+      font-size: 15px;
+      padding: 16px 24px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .gracias__title {
+      font-size: 26px;
+    }
+
+    .gracias__mascot {
+      width: 70px;
+      height: 70px;
+    }
+  }
+</style>
+
+<script is:inline>
+  // ── Confetti animation ──
+  (function() {
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H;
+
+    function resize() {
+      W = canvas.width  = canvas.parentElement.offsetWidth;
+      H = canvas.height = canvas.parentElement.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const colors = ['#F6B72B', '#FBAB21', '#FEA41B', '#3FA643', '#2B2C64', '#56578F', '#E8F8EA', '#FEF3DA'];
+    const particles = [];
+    const total = 80;
+
+    for (let i = 0; i < total; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H - H,
+        r: Math.random() * 6 + 3,
+        d: Math.random() * total,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.floor(Math.random() * 10) - 10,
+        tiltAngle: 0,
+        tiltAngleInc: Math.random() * 0.07 + 0.05,
+        opacity: 1,
+      });
+    }
+
+    let frame = 0;
+    const maxFrames = 280;
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      frame++;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        const fade = frame > maxFrames * 0.7 ? 1 - ((frame - maxFrames * 0.7) / (maxFrames * 0.3)) : 1;
+        p.opacity = Math.max(0, fade);
+
+        ctx.beginPath();
+        ctx.lineWidth = p.r / 2;
+        ctx.strokeStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.moveTo(p.x + p.tilt + p.r / 3, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 5);
+        ctx.stroke();
+
+        p.tiltAngle += p.tiltAngleInc;
+        p.y += (Math.cos(p.d) + 2 + p.r / 2) * 0.6;
+        p.tilt = Math.sin(p.tiltAngle) * 15;
+
+        if (p.y > H) {
+          p.y = -10;
+          p.x = Math.random() * W;
+        }
+      }
+
+      ctx.globalAlpha = 1;
+      if (frame < maxFrames) {
+        requestAnimationFrame(draw);
+      }
+    }
+
+    draw();
+  })();
+
+  // ── Fire conversion pixels ──
+  (function() {
+    // Meta Pixel – Purchase event
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Purchase', {
+        content_name: 'Pablo Premium',
+        currency: 'PEN',
+        value: 0, // Stripe sends the real value; 0 as fallback
+      });
+    }
+
+    // TikTok Pixel – CompletePayment event
+    if (typeof ttq !== 'undefined') {
+      ttq.track('CompletePayment', {
+        content_name: 'Pablo Premium',
+        currency: 'PEN',
+        value: 0,
+      });
+    }
+  })();
+</script>
