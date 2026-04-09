@@ -66,7 +66,7 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
           </ul>
           {OFFER_AVAILABLE ? (
             <button
-              onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
+              onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});if(typeof ttq!=='undefined')ttq.track('ViewContent',{content_name:'Plan Mensual',value:20,currency:'PEN'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
               class="plan-cta plan-cta--monthly"
               id="pricing-monthly-cta"
             >
@@ -131,7 +131,7 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
           </ul>
           {OFFER_AVAILABLE ? (
             <button
-              onclick={`window.planSeleccionado={name:'Plan Anual',value:200};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
+              onclick={`window.planSeleccionado={name:'Plan Anual',value:200};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});if(typeof ttq!=='undefined')ttq.track('ViewContent',{content_name:'Plan Anual',value:200,currency:'PEN'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
               class="plan-cta plan-cta--premium btn-primary"
               id="pricing-annual-cta"
             >

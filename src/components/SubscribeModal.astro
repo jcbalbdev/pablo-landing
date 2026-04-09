@@ -497,6 +497,14 @@ import iconPremiumRaw from '../assets/icon-premium.svg?raw';
           num_items: 1,
         });
       }
+      // Fire TikTok Pixel InitiateCheckout
+      if (typeof (window as any).ttq !== 'undefined' && plan) {
+        (window as any).ttq.track('InitiateCheckout', {
+          content_name: plan.name,
+          value: plan.value,
+          currency: 'PEN',
+        });
+      }
       window.open(_stripeUrl, '_blank');
     }
   });

@@ -37,7 +37,7 @@ import { CTA, IS_LIVE } from "../../siteConfig";
             href={CTA.href!}
             class="btn-primary"
             id="hero-cta-btn"
-            onclick="if(typeof fbq!=='undefined')fbq('trackCustom','Ver_Planes');"
+            onclick="if(typeof fbq!=='undefined')fbq('trackCustom','Ver_Planes');if(typeof ttq!=='undefined')ttq.track('ClickButton',{content_name:'Ver_Planes'});"
           >
             {CTA.label} <span class="btn-arrow">→</span>
           </a>
