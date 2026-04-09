@@ -1,102 +1,101 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import logoModal from '../assets/logodelmodal.png';
-// src/pages/gracias.astro
+// src/components/ThankYou.astro
+
+interface Props {
+  plan: 'mensual' | 'anual';
+}
+
+const { plan } = Astro.props;
+
+const subtitleText = plan === 'anual'
+  ? 'Tu suscripción anual está activa. Ahora tienes 7 días de prueba gratis y acceso ilimitado a todas las herramientas para llevar tus finanzas al siguiente nivel.'
+  : 'Tu suscripción mensual está activa. Ahora tienes acceso ilimitado a todas las herramientas para llevar tus finanzas al siguiente nivel.';
+
+const pixelPlanName = plan === 'anual' ? 'Plan Anual' : 'Plan Mensual';
+const pixelValue = plan === 'anual' ? 200 : 20;
 ---
 
-<Layout
-  title="¡Gracias por tu compra! — Pablo"
-  description="Tu suscripción a Pablo Premium está activa. Comienza a organizar tus finanzas desde WhatsApp ahora mismo."
->
-  <Navbar />
+<section class="gracias">
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
 
-  <main>
-    <section class="gracias">
-      <!-- Confetti canvas -->
-      <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+  <div class="container gracias__inner">
 
-      <div class="container gracias__inner">
+    <!-- Mascot -->
+    <div class="gracias__mascot">
+      <Image src={logoModal} alt="Pablo mascot" class="gracias__mascot-img" width={90} height={90} />
+    </div>
 
-        <!-- Mascot -->
-        <div class="gracias__mascot">
-          <Image src={logoModal} alt="Pablo mascot" class="gracias__mascot-img" width={90} height={90} />
-        </div>
+    <h1 class="gracias__title">
+      ¡Bienvenido a <span class="highlight">Pablo Premium</span>! 🎉
+    </h1>
 
-        <h1 class="gracias__title">
-          ¡Bienvenido a <span class="highlight">Pablo Premium</span>! 🎉
-        </h1>
+    <p class="gracias__subtitle">
+      {subtitleText}
+    </p>
 
-        <p class="gracias__subtitle">
-          Tu suscripción está activa. Ahora tienes acceso ilimitado a todas las herramientas para llevar tus finanzas al siguiente nivel.
-        </p>
+    <!-- Next steps card -->
+    <div class="gracias__card">
+      <p class="gracias__card-title">¿Qué sigue ahora?</p>
+      <ol class="gracias__steps">
+        <li>
+          <span class="step-number">1</span>
+          <div class="step-content">
+            <strong>Ingresa a la app de Pablo</strong>
+            <p>Usa el botón de abajo para acceder a tu cuenta y empezar a configurar todo.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-number">2</span>
+          <div class="step-content">
+            <strong>Conecta tu WhatsApp</strong>
+            <p>Desde la app podrás vincular tu número y empezar a registrar gastos por chat.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-number">3</span>
+          <div class="step-content">
+            <strong>¡Listo! Toma el control</strong>
+            <p>Pablo te acompañará a diario para cumplir tus metas financieras.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
 
-        <!-- Next steps card -->
-        <div class="gracias__card">
-          <p class="gracias__card-title">¿Qué sigue ahora?</p>
-          <ol class="gracias__steps">
-            <li>
-              <span class="step-number">1</span>
-              <div class="step-content">
-                <strong>Ingresa a la app de Pablo</strong>
-                <p>Usa el botón de abajo para acceder a tu cuenta y empezar a configurar todo.</p>
-              </div>
-            </li>
-            <li>
-              <span class="step-number">2</span>
-              <div class="step-content">
-                <strong>Conecta tu WhatsApp</strong>
-                <p>Desde la app podrás vincular tu número y empezar a registrar gastos por chat.</p>
-              </div>
-            </li>
-            <li>
-              <span class="step-number">3</span>
-              <div class="step-content">
-                <strong>¡Listo! Toma el control</strong>
-                <p>Pablo te acompañará a diario para cumplir tus metas financieras.</p>
-              </div>
-            </li>
-          </ol>
-        </div>
+    <!-- CTAs -->
+    <div class="gracias__ctas">
+      <a
+        href="https://usapablo.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary gracias__cta-app"
+        id="gracias-app-btn"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+          <polyline points="10 17 15 12 10 7"/>
+          <line x1="15" y1="12" x2="3" y2="12"/>
+        </svg>
+        Ingresar a la app de Pablo
+        <span class="btn-arrow">→</span>
+      </a>
+      <a href="/" class="btn-secondary gracias__cta-home" id="gracias-home-btn">
+        Volver al inicio
+      </a>
+    </div>
 
-        <!-- CTAs -->
-        <div class="gracias__ctas">
-          <a
-            href="https://usapablo.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-primary gracias__cta-app"
-            id="gracias-app-btn"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-              <polyline points="10 17 15 12 10 7"/>
-              <line x1="15" y1="12" x2="3" y2="12"/>
-            </svg>
-            Ingresar a la app de Pablo
-            <span class="btn-arrow">→</span>
-          </a>
-          <a href="/" class="btn-secondary gracias__cta-home" id="gracias-home-btn">
-            Volver al inicio
-          </a>
-        </div>
+    <!-- Trust note -->
+    <p class="gracias__note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      Recibirás un correo de confirmación con los detalles de tu suscripción.
+    </p>
 
-        <!-- Trust note -->
-        <p class="gracias__note">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          Recibirás un correo de confirmación con los detalles de tu suscripción.
-        </p>
-
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</Layout>
+  </div>
+</section>
 
 <style>
   .gracias {
@@ -128,7 +127,6 @@ import logoModal from '../assets/logodelmodal.png';
     max-width: 640px;
     margin: 0 auto;
   }
-
 
   /* ── Mascot ── */
   .gracias__mascot {
@@ -318,7 +316,7 @@ import logoModal from '../assets/logodelmodal.png';
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ pixelPlanName, pixelValue }}>
   // ── Confetti animation ──
   (function() {
     const canvas = document.getElementById('confetti-canvas');
@@ -392,21 +390,19 @@ import logoModal from '../assets/logodelmodal.png';
 
   // ── Fire conversion pixels ──
   (function() {
-    // Meta Pixel – Purchase event
     if (typeof fbq !== 'undefined') {
       fbq('track', 'Purchase', {
-        content_name: 'Pablo Premium',
+        content_name: pixelPlanName,
         currency: 'PEN',
-        value: 0, // Stripe sends the real value; 0 as fallback
+        value: pixelValue,
       });
     }
 
-    // TikTok Pixel – CompletePayment event
     if (typeof ttq !== 'undefined') {
       ttq.track('CompletePayment', {
-        content_name: 'Pablo Premium',
+        content_name: pixelPlanName,
         currency: 'PEN',
-        value: 0,
+        value: pixelValue,
       });
     }
   })();
