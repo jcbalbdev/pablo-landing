@@ -1,212 +1,421 @@
 ---
-import { IS_LIVE, STRIPE_URLS, OFFER_AVAILABLE } from '../../siteConfig';
+import { IS_LIVE, STRIPE_URLS, OFFER_AVAILABLE, FREE_TRIAL, KOMU_PROMO } from '../../siteConfig';
 import iconPremiumRaw from '../../assets/icon-premium.svg?raw';
 import coronaRaw from '../../assets/corona-premium.svg?raw';
+
+// Selecciona el link correcto del plan anual según el modo FREE_TRIAL
+const annualStripeUrl = FREE_TRIAL ? STRIPE_URLS.annual_trial : STRIPE_URLS.annual_no_trial;
 // src/components/sections/Pricing.astro
 ---
 
 <section class="pricing" id="planes">
   <div class="container pricing__inner">
-    <!-- Header -->
-    <div class="pricing__header">
-      <div class="pricing__badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        Pasos simples, resultados reales
-      </div>
-      <h2 class="pricing__title section-title">
-        Da el primer paso hacia tu <span class="highlight">bienestar financiero</span>
-      </h2>
-      <p class="pricing__subtitle">
-        Empieza con lo esencial y mejora tu plan cuando tú decides.
-        Sin presiones ni letra chica.
-      </p>
-    </div>
 
-    <!-- Cards -->
-    <div class="pricing__cards">
-
-    {IS_LIVE ? (
+    {KOMU_PROMO ? (
+      /* ====================================================
+         MODO: Promo La Komu — "Los 4 Pecados de Pablo"
+         ==================================================== */
       <>
-        <!-- LIVE: Monthly Plan -->
-        <div class="plan-card plan-monthly">
-          <div class="plan-header">
-            <div class="plan-icon plan-icon--navy">
-              <span class="icon-premium" set:html={iconPremiumRaw}></span>
-            </div>
-            <h3 class="plan-name">Pablo Premium</h3>
+        <!-- Header Komu -->
+        <div class="pricing__header">
+          <div class="komu-live-pill">
+            🔴 En vivo ahora · Oferta exclusiva · La Komu
           </div>
-          <p class="plan-tagline">
-            Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+          <h2 class="pricing__title section-title">
+            Los 4 Pecados de Pablo — <span class="highlight">Promo en vivo</span>
+          </h2>
+          <p class="pricing__subtitle">
+            Oferta activa solo durante el evento. Elige el plan que más te convenga y llévate el pase de La Komu <strong>incluido gratis</strong>.
           </p>
-          <div class="plan-price">
-            <span class="plan-amount">S/.20</span>
-            <span class="plan-period">/mensuales</span>
-          </div>
-          <ul class="plan-features">
-            <li>
-              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Registro ilimitado con texto, audio o foto desde Whatsapp
-            </li>
-            <li>
-              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Presupuestos y categorías personalizada
-            </li>
-            <li>
-              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Metas de ahorro para mantener tu motivación
-            </li>
-            <li>
-              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Análisis y consejos por sin tecnicismos
-            </li>
-            <li>
-              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Control automático de tus pagos recurrentes
-            </li>
-          </ul>
-          {OFFER_AVAILABLE ? (
-            <button
-              onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});if(typeof ttq!=='undefined')ttq.track('ViewContent',{content_name:'Plan Mensual',value:20,currency:'PEN'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
-              class="plan-cta plan-cta--monthly"
-              id="pricing-monthly-cta"
-            >
-              Desbloquea a Pablo
-            </button>
-          ) : (
-            <button class="plan-cta plan-cta--unavailable" disabled id="pricing-monthly-cta">
-              Oferta no disponible
-            </button>
-          )}
         </div>
 
-        <!-- LIVE: Annual Plan -->
-        <div class="plan-card plan-premium plan-annual">
-          <div class="plan-best-badge">
-            <span class="icon-corona" set:html={coronaRaw}></span>
-            Tu mejor opción
-          </div>
-          <div class="plan-header">
-            <div class="plan-icon plan-icon--amber">
-              <span class="icon-premium" set:html={iconPremiumRaw}></span>
+        <!-- Cards Komu -->
+        <div class="pricing__cards">
+
+          <!-- Komu: Plan Mensual -->
+          <div class="plan-card plan-monthly komu-card">
+            <div class="plan-header">
+              <div class="plan-icon plan-icon--navy">
+                <span class="icon-premium" set:html={iconPremiumRaw}></span>
+              </div>
+              <div>
+                <h3 class="plan-name">Pablo Premium</h3>
+                <span class="plan-sub">+ Pase Mensual La Komu</span>
+              </div>
             </div>
-            <h3 class="plan-name">Pablo Premium</h3>
+            <p class="plan-tagline">
+              Lleva tus finanzas al siguiente nivel con herramientas avanzadas — más todo lo de La Komu incluido.
+            </p>
+            <div class="plan-price">
+              <span class="plan-amount">S/.20</span>
+              <span class="plan-period">/mensuales</span>
+            </div>
+            <div class="plan-original-price">
+              <span class="plan-crossed">S/.54</span>
+              <span class="plan-discount-badge">✨ 63% OFF · Precio especial La Komu</span>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Registro ilimitado con texto, audio o foto desde Whatsapp.
+              </li>
+              <li>
+                <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Presupuestos y categorías personalizadas
+              </li>
+              <li>
+                <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Metas, análisis, consejos y más.
+              </li>
+            </ul>
+            <div class="komu-bonus">
+              <div class="komu-bonus__header">🎁 Bonus exclusivo · La Komu</div>
+              <ul class="plan-features">
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <strong>Pase mensual de La Komu incluido gratis</strong>
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Workshop técnico de Pablo EN VIVO
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Asesorías financieras grupales
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Clases semanales de inversiones
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Recursos y herramientas financieras
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Participación en eventos de networking
+                </li>
+              </ul>
+            </div>
+            {OFFER_AVAILABLE ? (
+              <button
+                onclick={`window.planSeleccionado={name:'Plan Mensual Komu',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual_komu'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
+                class="plan-cta plan-cta--monthly"
+                id="pricing-komu-monthly-cta"
+              >
+                Quiero el Plan Mensual
+              </button>
+            ) : (
+              <button class="plan-cta plan-cta--unavailable" disabled id="pricing-komu-monthly-cta">
+                Oferta no disponible
+              </button>
+            )}
           </div>
-          <p class="plan-tagline">
-            Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
-          </p>
-          <div class="plan-price">
-            <span class="plan-amount">S/.200</span>
-            <span class="plan-period">/anuales</span>
+
+          <!-- Komu: Plan Anual (mejor opción) -->
+          <div class="plan-card plan-premium plan-annual komu-card">
+            <div class="plan-best-badge">
+              <span class="icon-corona" set:html={coronaRaw}></span>
+              Tu mejor opción
+            </div>
+            <div class="plan-header">
+              <div class="plan-icon plan-icon--amber">
+                <span class="icon-premium" set:html={iconPremiumRaw}></span>
+              </div>
+              <div>
+                <h3 class="plan-name">Pablo Premium</h3>
+                <span class="plan-sub plan-sub--amber">+ Pase Anual La Komu</span>
+              </div>
+            </div>
+            <p class="plan-tagline">
+              Lleva tus finanzas al siguiente nivel con herramientas avanzadas — más todo lo de La Komu incluido un año completo.
+            </p>
+            <div class="plan-price">
+              <span class="plan-amount">S/.200</span>
+              <span class="plan-period">/anuales</span>
+            </div>
+            <div class="plan-original-price">
+              <span class="plan-crossed">S/.540</span>
+              <span class="plan-discount-badge">✨ 63% OFF · Precio especial La Komu</span>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Todo lo incluido en el Plan Mensual.
+              </li>
+              <li>
+                <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Ahorras 2 meses de suscripción al instante.
+              </li>
+              <li>
+                <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Un año entero de tranquilidad, sin renovación mensual.
+              </li>
+              <li>
+                <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Acompañamiento a largo plazo para asegurar que cumplas tus metas.
+              </li>
+            </ul>
+            <div class="komu-bonus">
+              <div class="komu-bonus__header">🎁 Bonus exclusivo · La Komu</div>
+              <ul class="plan-features">
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <strong>Pase anual de La Komu incluido gratis</strong>
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Workshop técnico de Pablo EN VIVO
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Asesorías financieras grupales
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Clases semanales de inversiones
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Recursos y herramientas financieras
+                </li>
+                <li>
+                  <svg class="check check--komu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Participación en eventos de networking
+                </li>
+              </ul>
+            </div>
+            {OFFER_AVAILABLE ? (
+              <button
+                onclick={`window.planSeleccionado={name:'Plan Anual Komu',value:200};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual_komu'});window.openSubscribeModal('${annualStripeUrl}')`}
+                class="plan-cta plan-cta--premium btn-primary"
+                id="pricing-komu-annual-cta"
+              >
+                Quiero el Plan Anual
+              </button>
+            ) : (
+              <button class="plan-cta plan-cta--unavailable" disabled id="pricing-komu-annual-cta">
+                Oferta no disponible
+              </button>
+            )}
           </div>
-          <div class="plan-original-price">
-            <span class="plan-crossed">S/.240</span>
-            <span class="plan-discount-badge">✨ 16% OFF · Oferta por temporada</span>
-          </div>
-          <ul class="plan-features">
-            <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Todo lo incluido en el plan Mensual.
-            </li>
-            <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              7 días gratis de prueba.
-            </li>
-            <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              16% de descuento exclusivo por temporada.
-            </li>
-            <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Ahorras 2 meses de suscripción al instante.
-            </li>
-            <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Un año entero de tranquilidad, sin renovación mensual.
-            </li>
-            <li>
-              <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Acompañamiento a largo plazo para asegurar que cumplas tus metas.
-            </li>
-            
-          </ul>
-          {OFFER_AVAILABLE ? (
-            <button
-              onclick={`window.planSeleccionado={name:'Plan Anual',value:200};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});if(typeof ttq!=='undefined')ttq.track('ViewContent',{content_name:'Plan Anual',value:200,currency:'PEN'});window.openSubscribeModal('${STRIPE_URLS.annual}')`}
-              class="plan-cta plan-cta--premium btn-primary"
-              id="pricing-annual-cta"
-            >
-              Empieza tu prueba gratis
-            </button>
-          ) : (
-            <button class="plan-cta plan-cta--unavailable" disabled id="pricing-annual-cta">
-              Oferta no disponible
-            </button>
-          )}
+
         </div>
+
+        <p class="pricing__note pricing__note--komu">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Oferta válida hasta el 26 de abril de 2026. Cancela cuando quieras.
+        </p>
       </>
     ) : (
+      /* ====================================================
+         MODO NORMAL: Diseño estándar de precios
+         ==================================================== */
       <>
-        <!-- WAITLIST: Free Plan -->
-        <div class="plan-card plan-free">
-          <div class="plan-header">
-            <div class="plan-icon plan-icon--outline">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <h3 class="plan-name">Pablo gratis</h3>
+        <!-- Header -->
+        <div class="pricing__header">
+          <div class="pricing__badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Pasos simples, resultados reales
           </div>
-          <p class="plan-tagline">
-            Empieza a organizar tu dinero con Pablo en WhatsApp, simple, cercano y 100% gratis.
+          <h2 class="pricing__title section-title">
+            Da el primer paso hacia tu <span class="highlight">bienestar financiero</span>
+          </h2>
+          <p class="pricing__subtitle">
+            Empieza con lo esencial y mejora tu plan cuando tú decides.
+            Sin presiones ni letra chica.
           </p>
-          <div class="plan-price">
-            <span class="plan-amount">S/.0</span>
-            <span class="plan-period">siempre</span>
-          </div>
-          <ul class="plan-features">
-            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Registro ilimitado de gastos e ingresos por texto</li>
-            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 registros por voz y foto al mes</li>
-            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tips financieros semanales</li>
-            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reportes básicos de gastos</li>
-            <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte técnico estándar</li>
-          </ul>
-          <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--free" id="pricing-free-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
         </div>
 
-        <!-- WAITLIST: Premium Plan -->
-        <div class="plan-card plan-premium">
-          <div class="plan-best-badge">
-            <span class="icon-corona" set:html={coronaRaw}></span>
-            Tu mejor opción
-          </div>
-          <div class="plan-header">
-            <div class="plan-icon plan-icon--amber">
-              <span class="icon-premium" set:html={iconPremiumRaw}></span>
+        <!-- Cards -->
+        <div class="pricing__cards">
+
+        {IS_LIVE ? (
+          <>
+            <!-- LIVE: Monthly Plan -->
+            <div class="plan-card plan-monthly">
+              <div class="plan-header">
+                <div class="plan-icon plan-icon--navy">
+                  <span class="icon-premium" set:html={iconPremiumRaw}></span>
+                </div>
+                <h3 class="plan-name">Pablo Premium</h3>
+              </div>
+              <p class="plan-tagline">
+                Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+              </p>
+              <div class="plan-price">
+                <span class="plan-amount">S/.20</span>
+                <span class="plan-period">/mensuales</span>
+              </div>
+              <ul class="plan-features">
+                <li>
+                  <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Registro ilimitado con texto, audio o foto desde Whatsapp
+                </li>
+                <li>
+                  <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Presupuestos y categorías personalizada
+                </li>
+                <li>
+                  <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Metas de ahorro para mantener tu motivación
+                </li>
+                <li>
+                  <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Análisis y consejos por sin tecnicismos
+                </li>
+                <li>
+                  <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Control automático de tus pagos recurrentes
+                </li>
+              </ul>
+              {OFFER_AVAILABLE ? (
+                <button
+                  onclick={`window.planSeleccionado={name:'Plan Mensual',value:20};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'mensual'});if(typeof ttq!=='undefined')ttq.track('ViewContent',{content_name:'Plan Mensual',value:20,currency:'PEN'});window.openSubscribeModal('${STRIPE_URLS.monthly}')`}
+                  class="plan-cta plan-cta--monthly"
+                  id="pricing-monthly-cta"
+                >
+                  Desbloquea a Pablo
+                </button>
+              ) : (
+                <button class="plan-cta plan-cta--unavailable" disabled id="pricing-monthly-cta">
+                  Oferta no disponible
+                </button>
+              )}
             </div>
-            <h3 class="plan-name">Pablo Premium</h3>
-          </div>
-          <p class="plan-tagline">
-            Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
-          </p>
-          <div class="plan-price">
-            <span class="plan-amount">S/.20</span>
-            <span class="plan-period">/mensuales</span>
-          </div>
-          <ul class="plan-features">
-            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo que incluye Pablo Gratis, y además:</li>
-            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Automatización de registros ilimitados vía texto, voz y foto</li>
-            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acceso a Pablo Web con reportes completos y seguimiento de metas financieras</li>
-            <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
-          </ul>
-          <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--premium btn-primary" id="pricing-premium-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
+
+            <!-- LIVE: Annual Plan -->
+            <div class="plan-card plan-premium plan-annual">
+              <div class="plan-best-badge">
+                <span class="icon-corona" set:html={coronaRaw}></span>
+                Tu mejor opción
+              </div>
+              <div class="plan-header">
+                <div class="plan-icon plan-icon--amber">
+                  <span class="icon-premium" set:html={iconPremiumRaw}></span>
+                </div>
+                <h3 class="plan-name">Pablo Premium</h3>
+              </div>
+              <p class="plan-tagline">
+                Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+              </p>
+              <div class="plan-price">
+                <span class="plan-amount">S/.200</span>
+                <span class="plan-period">/anuales</span>
+              </div>
+              <div class="plan-original-price">
+                <span class="plan-crossed">S/.240</span>
+                <span class="plan-discount-badge">✨ 16% OFF · Oferta por temporada</span>
+              </div>
+              <ul class="plan-features">
+                <li>
+                  <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Todo lo incluido en el plan Mensual.
+                </li>
+                {FREE_TRIAL && (
+                  <li>
+                    <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    7 días gratis de prueba.
+                  </li>
+                )}
+                <li>
+                  <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  16% de descuento exclusivo por temporada.
+                </li>
+                <li>
+                  <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Ahorras 2 meses de suscripción al instante.
+                </li>
+                <li>
+                  <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Un año entero de tranquilidad, sin renovación mensual.
+                </li>
+                <li>
+                  <svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Acompañamiento a largo plazo para asegurar que cumplas tus metas.
+                </li>
+              </ul>
+              {OFFER_AVAILABLE ? (
+                <button
+                  onclick={`window.planSeleccionado={name:'Plan Anual',value:200};if(typeof fbq!=='undefined')fbq('trackCustom','Abrir_Modal',{plan:'anual'});if(typeof ttq!=='undefined')ttq.track('ViewContent',{content_name:'Plan Anual',value:200,currency:'PEN'});window.openSubscribeModal('${annualStripeUrl}')`}
+                  class="plan-cta plan-cta--premium btn-primary"
+                  id="pricing-annual-cta"
+                >
+                  Empieza tu prueba gratis
+                </button>
+              ) : (
+                <button class="plan-cta plan-cta--unavailable" disabled id="pricing-annual-cta">
+                  Oferta no disponible
+                </button>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <!-- WAITLIST: Free Plan -->
+            <div class="plan-card plan-free">
+              <div class="plan-header">
+                <div class="plan-icon plan-icon--outline">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3 class="plan-name">Pablo gratis</h3>
+              </div>
+              <p class="plan-tagline">
+                Empieza a organizar tu dinero con Pablo en WhatsApp, simple, cercano y 100% gratis.
+              </p>
+              <div class="plan-price">
+                <span class="plan-amount">S/.0</span>
+                <span class="plan-period">siempre</span>
+              </div>
+              <ul class="plan-features">
+                <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Registro ilimitado de gastos e ingresos por texto</li>
+                <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 registros por voz y foto al mes</li>
+                <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tips financieros semanales</li>
+                <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reportes básicos de gastos</li>
+                <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B2C64" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte técnico estándar</li>
+              </ul>
+              <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--free" id="pricing-free-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
+            </div>
+
+            <!-- WAITLIST: Premium Plan -->
+            <div class="plan-card plan-premium">
+              <div class="plan-best-badge">
+                <span class="icon-corona" set:html={coronaRaw}></span>
+                Tu mejor opción
+              </div>
+              <div class="plan-header">
+                <div class="plan-icon plan-icon--amber">
+                  <span class="icon-premium" set:html={iconPremiumRaw}></span>
+                </div>
+                <h3 class="plan-name">Pablo Premium</h3>
+              </div>
+              <p class="plan-tagline">
+                Lleva tus finanzas al siguiente nivel con herramientas avanzadas y una experiencia a tu medida.
+              </p>
+              <div class="plan-price">
+                <span class="plan-amount">S/.20</span>
+                <span class="plan-period">/mensuales</span>
+              </div>
+              <ul class="plan-features">
+                <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo que incluye Pablo Gratis, y además:</li>
+                <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Automatización de registros ilimitados vía texto, voz y foto</li>
+                <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acceso a Pablo Web con reportes completos y seguimiento de metas financieras</li>
+                <li><svg class="check check--amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
+              </ul>
+              <button onclick="window.openWaitlistModal()" class="plan-cta plan-cta--premium btn-primary" id="pricing-premium-cta">Únete a la lista de espera <span class="btn-arrow">→</span></button>
+            </div>
+          </>
+        )}
+
         </div>
+
+        <p class="pricing__note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Cancela cuando quieras. Sin complicaciones.
+        </p>
       </>
     )}
 
-    </div>
-
-    <p class="pricing__note">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Cancela cuando quieras. Sin complicaciones.
-    </p>
   </div>
 </section>
 
@@ -242,6 +451,20 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
     color: #2a7a52;
     font-weight: 600;
     font-size: 14px;
+  }
+
+  .komu-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    border-radius: var(--radius-pill);
+    background: #FFF0F0;
+    color: #C0392B;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1.5px solid #F5C6C6;
+    letter-spacing: -0.01em;
   }
 
   .pricing__title {
@@ -295,6 +518,45 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
     box-shadow: 0 8px 40px rgba(245, 166, 35, 0.2);
   }
 
+  /* Komu card: leve highlight adicional */
+  .komu-card.plan-monthly {
+    border-color: #2B2C64;
+    box-shadow: 0 4px 24px rgba(43, 44, 100, 0.12);
+  }
+
+  /* Komu bonus block */
+  .komu-bonus {
+    background: #FFF5F5;
+    border: 1.5px solid #F5C6C6;
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: -8px;
+  }
+
+  .komu-bonus__header {
+    font-size: 12px;
+    font-weight: 700;
+    color: #C0392B;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Plan sub-label (La Komu) */
+  .plan-sub {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2B2C64;
+    opacity: 0.65;
+  }
+
+  .plan-sub--amber {
+    color: #875A00;
+    opacity: 1;
+  }
+
   /* Best badge */
   .plan-best-badge {
     position: absolute;
@@ -320,6 +582,7 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
 
   .plan-icon--outline {
@@ -518,6 +781,14 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
     font-weight: 500;
   }
 
+  .pricing__note--komu {
+    color: #875A00;
+    background: #FEF3DA;
+    border: 1px solid #F5C970;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .pricing__cards {
@@ -551,4 +822,6 @@ import coronaRaw from '../../assets/corona-premium.svg?raw';
       padding: 24px 18px;
     }
   }
+
+  /* Force Astro CSS compiler reload */
 </style>

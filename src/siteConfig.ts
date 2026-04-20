@@ -12,6 +12,20 @@ export const SITE_MODE: 'waitlist' | 'live' = 'live';
 // ============================================================
 export const OFFER_AVAILABLE = true;
 
+// ============================================================
+//  FREE TRIAL MODE — controla el plan anual de S/.200
+//  true  → usa el link con 7 días gratis y muestra ese beneficio
+//  false → usa el link sin prueba y oculta el ítem "7 días gratis"
+// ============================================================
+export const FREE_TRIAL = false;
+
+// ============================================================
+//  KOMU PROMO MODE — activa el modo evento "Los 4 Pecados de Pablo"
+//  true  → muestra el diseño especial de La Komu en la sección de planes
+//  false → muestra el diseño normal de precios
+// ============================================================
+export const KOMU_PROMO = true;
+
 // Configuración de cada modo
 export const CTA_CONFIG = {
   waitlist: {
@@ -37,6 +51,7 @@ export const APP_URL = 'https://usapablo.app/';
 //  STRIPE LINKS — URLs de pago de Stripe
 // ============================================================
 export const STRIPE_URLS = {
-  monthly: 'https://buy.stripe.com/9B628s8Hr8Za7LU2251sQ0n', // S/.20/mes
-  annual: 'https://buy.stripe.com/3cIaEYcXHcbmd6egWZ1sQ0r', // S/.200/año
+  monthly: 'https://buy.stripe.com/9B628s8Hr8Za7LU2251sQ0n',         // S/.20/mes
+  annual_trial: 'https://buy.stripe.com/3cIaEYcXHcbmd6egWZ1sQ0r',   // S/.200/año — CON 7 días gratis
+  annual_no_trial: 'https://buy.stripe.com/6oU28saPz3EQ0js4ad1sQ0t', // S/.200/año — SIN 7 días gratis
 };
