@@ -1,0 +1,207 @@
+---
+// CountdownBanner.astro
+// Deadline: April 26, 2026 at midnight (end of day, Peru time = UTC-5)
+---
+
+<a href="#planes" class="countdown-banner" id="countdown-banner">
+  <div class="countdown-banner__inner">
+    <span class="countdown-banner__fire">🔥</span>
+    <p class="countdown-banner__text">
+      <strong>ÚLTIMAS HORAS</strong> para desbloquear la KOMU GRATIS
+      <span class="countdown-banner__highlight">70% OFF</span>
+    </p>
+    <div class="countdown-banner__timer" id="countdown-timer" aria-live="polite">
+      <span class="countdown-number" id="cd-hours">00</span>
+      <span class="countdown-sep">:</span>
+      <span class="countdown-number" id="cd-minutes">00</span>
+      <span class="countdown-sep">:</span>
+      <span class="countdown-number" id="cd-seconds">00</span>
+    </div>
+    <span class="countdown-banner__fire">🔥</span>
+  </div>
+</a>
+
+<style>
+  .countdown-banner {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: linear-gradient(90deg, #ffb72b 0%, #ff9a3c 50%, #ff7c50 100%);
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+  .countdown-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+
+  .countdown-banner__fire {
+    font-size: 18px;
+    animation: pulse-fire 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-fire {
+    from { transform: scale(1); }
+    to   { transform: scale(1.25) rotate(-5deg); }
+  }
+
+  .countdown-banner__text {
+    color: #fff;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+
+  .countdown-banner__text strong {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .countdown-banner__highlight {
+    display: inline-block;
+    background: rgba(255,255,255,0.22);
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-weight: 700;
+    margin-left: 4px;
+    white-space: nowrap;
+  }
+
+  /* Timer */
+  .countdown-banner__timer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 4px 12px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 36px;
+  }
+
+  .countdown-number {
+    font-family: var(--font-heading, 'Outfit', monospace);
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease;
+  }
+
+  .countdown-number.tick {
+    transform: scale(1.15);
+  }
+
+  .countdown-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 1px;
+  }
+
+  .countdown-sep {
+    font-size: 18px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  /* Expired state */
+  .countdown-banner.expired {
+    display: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .countdown-banner__text {
+      font-size: 12px;
+    }
+    .countdown-banner__text strong {
+      font-size: 13px;
+    }
+    .countdown-number {
+      font-size: 17px;
+    }
+    .countdown-unit {
+      min-width: 28px;
+    }
+    .countdown-banner__fire {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    // April 26, 2026 at 23:59:59 Peru time (UTC-5) = April 27, 2026 04:59:59 UTC
+    var deadline = new Date('2026-04-27T04:59:59Z').getTime();
+
+    var hoursEl   = document.getElementById('cd-hours');
+    var minutesEl = document.getElementById('cd-minutes');
+    var secondsEl = document.getElementById('cd-seconds');
+    var banner    = document.getElementById('countdown-banner');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick(el, val) {
+      if (el.textContent !== pad(val)) {
+        el.textContent = pad(val);
+        el.classList.remove('tick');
+        void el.offsetWidth; // reflow
+        el.classList.add('tick');
+        setTimeout(function () { el.classList.remove('tick'); }, 200);
+      }
+    }
+
+    function update() {
+      var now  = Date.now();
+      var diff = deadline - now;
+
+      if (diff <= 0) {
+        banner && banner.classList.add('expired');
+        clearInterval(timer);
+        return;
+      }
+
+      var totalSec = Math.floor(diff / 1000);
+      var h  = Math.floor(totalSec / 3600);
+      var m  = Math.floor((totalSec % 3600) / 60);
+      var s  = totalSec % 60;
+
+      tick(hoursEl,   h);
+      tick(minutesEl, m);
+      tick(secondsEl, s);
+    }
+
+    update();
+    var timer = setInterval(update, 1000);
+  })();
+</script>

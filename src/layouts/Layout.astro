@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SubscribeModal from '../components/SubscribeModal.astro';
+import CountdownBanner from '../components/CountdownBanner.astro';
 import { IS_LIVE } from '../siteConfig';
 
 interface Props {
@@ -93,6 +94,7 @@ const ogImage = `${siteUrl}/Logo.png`;
     <!-- TikTok Pixel Code End -->
   </head>
   <body>
+    <CountdownBanner />
     <slot />
     {IS_LIVE && <SubscribeModal />}
   </body>
