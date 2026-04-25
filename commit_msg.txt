@@ -1,6 +1,0 @@
-feat: add urgency countdown banner - Komu promo
-
-- Add CountdownBanner component: sticky orange gradient, countdown to Apr 26 midnight Peru time, links to planes section
-- Update Pricing title to Pablo Promo Komunitaria - Ultimas horas
-- Annual plan original price updated to S/.660, badge to 70 pct OFF
-- Navbar transparent on load to remove gray bar below banner; restores frosted-glass background on scroll
