@@ -17,14 +17,14 @@ export const OFFER_AVAILABLE = true;
 //  true  → usa el link con 7 días gratis y muestra ese beneficio
 //  false → usa el link sin prueba y oculta el ítem "7 días gratis"
 // ============================================================
-export const FREE_TRIAL = false;
+export const FREE_TRIAL = true;
 
 // ============================================================
 //  KOMU PROMO MODE — activa el modo evento "Los 4 Pecados de Pablo"
 //  true  → muestra el diseño especial de La Komu en la sección de planes
 //  false → muestra el diseño normal de precios
 // ============================================================
-export const KOMU_PROMO = true;
+export const KOMU_PROMO = false;
 
 // Configuración de cada modo
 export const CTA_CONFIG = {
