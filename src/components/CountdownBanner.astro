@@ -1,13 +1,13 @@
 ---
 // CountdownBanner.astro
-// Deadline: April 26, 2026 at midnight (end of day, Peru time = UTC-5)
+// Deadline: April 30, 2026 at 8:00 PM Peru time (UTC-5) = May 1, 2026 01:00:00 UTC
 ---
 
 <a href="#planes" class="countdown-banner" id="countdown-banner">
   <div class="countdown-banner__inner">
     <span class="countdown-banner__fire">🔥</span>
     <p class="countdown-banner__text">
-      <strong>ÚLTIMAS HORAS</strong> para desbloquear la KOMU GRATIS
+      <strong>ÚLTIMAS 24 HORAS</strong> — Oferta
       <span class="countdown-banner__highlight">70% OFF</span>
     </p>
     <div class="countdown-banner__timer" id="countdown-timer" aria-live="polite">
@@ -161,8 +161,8 @@
 
 <script is:inline>
   (function () {
-    // April 26, 2026 at 23:59:59 Peru time (UTC-5) = April 27, 2026 04:59:59 UTC
-    var deadline = new Date('2026-04-27T04:59:59Z').getTime();
+    // April 30, 2026 at 20:00:00 Peru time (UTC-5) = May 1, 2026 01:00:00 UTC
+    var deadline = new Date('2026-05-01T01:00:00Z').getTime();
 
     var hoursEl   = document.getElementById('cd-hours');
     var minutesEl = document.getElementById('cd-minutes');
